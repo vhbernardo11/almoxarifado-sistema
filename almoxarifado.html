@@ -1,0 +1,1596 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Almoxarifado - Sistema Profissional 2025</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+--primary: #6366f1;
+--primary-light: #818cf8;
+--primary-dark: #4f46e5;
+--success: #10b981;
+--warning: #f59e0b;
+--danger: #ef4444;
+--bg: #0f172a;
+--bg-light: #1e293b;
+--text: #f1f5f9;
+--text-secondary: #cbd5e1;
+--glass-bg: rgba(30, 41, 59, 0.7);
+--glass-border: rgba(148, 163, 184, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 50%, #0f172a 100%); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+body::before { content: ''; position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%); border-radius: 50%; top: -100px; right: -100px; z-index: 1; pointer-events: none; }
+body::after { content: ''; position: fixed; width: 300px; height: 300px; background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%); border-radius: 50%; bottom: -50px; left: -50px; z-index: 1; pointer-events: none; }
+
+.container { max-width: 1600px; margin: 0 auto; padding: 15px; position: relative; z-index: 2; }
+header { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 25px 15px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
+header h1 { font-size: clamp(24px, 5vw, 32px); font-weight: 700; background: linear-gradient(135deg, #6366f1, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.alerts-container { position: fixed; top: 20px; right: 20px; z-index: 10000; max-width: 90%; }
+.alert-item { background: rgba(0,0,0,0.9); border: 1px solid; padding: 12px 16px; border-radius: 12px; margin-bottom: 12px; animation: slideIn 0.3s ease-out; font-size: 13px; display: flex; align-items: center; gap: 12px; }
+.alert-item.sucesso { border-color: var(--success); background: rgba(16, 185, 129, 0.15); color: #86efac; }
+.alert-item.danger { border-color: var(--danger); background: rgba(239, 68, 68, 0.15); color: #fca5a5; }
+@keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+.nav-tabs { display: flex; gap: 8px; margin-top: 20px; border-bottom: 1px solid var(--glass-border); flex-wrap: wrap; overflow-x: auto; }
+.nav-tab { padding: 10px 16px; background: transparent; border: none; border-bottom: 2px solid transparent; color: var(--text-secondary); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+.nav-tab:hover { color: var(--text); border-bottom-color: var(--primary-light); }
+.nav-tab.active { color: var(--primary-light); border-bottom-color: var(--primary-light); }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); padding: 20px; border-radius: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); margin-bottom: 20px; }
+.card h2 { font-size: 20px; margin-bottom: 20px; color: var(--text); font-weight: 600; }
+
+.btn { padding: 12px 20px; border: none; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary { background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(99, 102, 241, 0.4); }
+.btn-success { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+.btn-success:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(16, 185, 129, 0.4); }
+.btn-secondary { background: rgba(148, 163, 184, 0.2); color: var(--text); border: 1px solid rgba(148, 163, 184, 0.3); }
+.btn-secondary:hover { background: rgba(148, 163, 184, 0.3); }
+.btn-danger { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+.btn-danger:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(239, 68, 68, 0.4); }
+.btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
+
+.search-box { position: relative; margin-bottom: 15px; }
+.search-box input { width: 100%; padding: 12px 14px; border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; background: rgba(30, 41, 59, 0.8); color: var(--text); font-family: 'Poppins', sans-serif; font-size: 14px; transition: all 0.3s; }
+.search-box input:focus { outline: none; border-color: var(--primary); background: rgba(30, 41, 59, 0.95); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); }
+.search-hints { font-size: 10px; color: var(--text-secondary); margin-top: 5px; }
+.resultados-lista { position: absolute; top: 100%; left: 0; right: 0; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; max-height: 400px; overflow-y: auto; z-index: 100; margin-top: 5px; display: none; }
+.resultado-item { background: transparent; padding: 12px 14px; border-bottom: 1px solid rgba(148, 163, 184, 0.1); cursor: pointer; transition: all 0.15s; }
+.resultado-item:last-child { border-bottom: none; }
+.resultado-item:hover { background: rgba(99, 102, 241, 0.08); border-left: 3px solid var(--primary); padding-left: 11px; }
+.resultado-item.selecionado { background: rgba(99, 102, 241, 0.25); border-left: 3px solid var(--primary); padding-left: 11px; }
+.resultado-codigo { font-size: 10px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; }
+.resultado-nome { font-size: 13px; color: var(--text); font-weight: 600; margin: 3px 0; }
+.resultado-info { font-size: 11px; color: var(--text-secondary); }
+
+.table-container { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; overflow: hidden; margin-bottom: 20px; max-height: 600px; overflow-y: auto; }
+table { width: 100%; border-collapse: collapse; }
+th { padding: 12px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.05)); font-size: 10px; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--glass-border); text-transform: uppercase; letter-spacing: 0.5px; }
+td { padding: 10px 12px; border-bottom: 1px solid rgba(148, 163, 184, 0.1); font-size: 12px; }
+tbody tr { transition: all 0.15s; cursor: pointer; }
+tbody tr:hover { background: rgba(99, 102, 241, 0.08); }
+
+.badge-ok { background: rgba(16, 185, 129, 0.2); color: #86efac; padding: 4px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+.badge-baixo { background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 4px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 15px; }
+.modal-overlay.hidden { display: none !important; }
+.modal-content { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 25px; max-width: 95vw; width: 900px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); animation: slideUp 0.3s ease-out; }
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--glass-border); }
+.modal-title { font-size: 20px; font-weight: 700; color: var(--text); }
+.modal-close { background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; transition: all 0.2s; }
+.modal-close:hover { background: rgba(239, 68, 68, 0.3); }
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 6px; font-size: 11px; font-weight: 600; color: var(--text); text-transform: uppercase; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 8px; background: rgba(30, 41, 59, 0.8); color: var(--text); font-family: 'Poppins', sans-serif; font-size: 13px; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); background: rgba(30, 41, 59, 0.95); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); }
+
+.modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+.modal-actions button { flex: 1; }
+
+.stats-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 15px; }
+.stat-item { background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 8px; padding: 12px; text-align: center; }
+.stat-label { font-size: 10px; color: var(--text-secondary); text-transform: uppercase; }
+.stat-value { font-size: 18px; font-weight: 700; color: var(--primary-light); margin-top: 5px; }
+
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+
+.setores-lista-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+.setor-card { background: var(--glass-bg); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 16px; padding: 18px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; }
+.setor-card:hover { background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.5); transform: translateY(-4px); }
+.setor-info { flex: 1; cursor: pointer; }
+.setor-info:hover .setor-nome { color: var(--primary-light); text-decoration: underline; }
+.setor-nome { font-size: 15px; font-weight: 700; color: var(--text); transition: all 0.2s; }
+.setor-stats { font-size: 11px; color: var(--text-secondary); margin-top: 6px; }
+.setor-acoes { display: flex; gap: 8px; margin-left: 12px; }
+.btn-icon { width: 40px; height: 40px; border: none; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: all 0.3s; background: rgba(99, 102, 241, 0.2); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+.btn-icon:hover { background: rgba(99, 102, 241, 0.3); }
+.btn-icon.delete { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+.btn-icon.delete:hover { background: rgba(239, 68, 68, 0.3); }
+
+.relatorio-resultado { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 20px; margin-top: 20px; max-height: 700px; overflow-y: auto; }
+.relatorio-resultado h3 { font-size: 16px; font-weight: 700; margin-bottom: 15px; color: var(--text); padding-bottom: 10px; border-bottom: 1px solid var(--glass-border); }
+
+.tabs-consulta { display: flex; gap: 5px; margin-bottom: 15px; border-bottom: 1px solid var(--glass-border); }
+.tab-consulta { padding: 8px 12px; background: transparent; border: none; border-bottom: 2px solid transparent; color: var(--text-secondary); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+.tab-consulta:hover { color: var(--text); }
+.tab-consulta.active { color: var(--primary-light); border-bottom-color: var(--primary-light); }
+.tab-content-consulta { display: none; }
+.tab-content-consulta.active { display: block; }
+
+.info-box { background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+.info-label { font-size: 10px; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; }
+.info-value { font-size: 14px; color: var(--text); font-weight: 600; margin-top: 5px; }
+
+.badge-entrada { background: rgba(16, 185, 129, 0.2); color: #86efac; padding: 4px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+.badge-saida { background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 4px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+
+.dados-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+.dados-card { background: rgba(99, 102, 241, 0.1); border: 2px solid rgba(99, 102, 241, 0.3); border-radius: 16px; padding: 20px; text-align: center; transition: all 0.3s; }
+.dados-card:hover { border-color: rgba(99, 102, 241, 0.6); background: rgba(99, 102, 241, 0.15); }
+.dados-icon { font-size: 40px; margin-bottom: 10px; }
+.dados-titulo { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 15px; }
+.dados-botoes { display: flex; flex-direction: column; gap: 8px; }
+
+.info-backup { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 15px; margin-top: 20px; font-size: 12px; color: var(--text-secondary); }
+
+.aviso-resetar { background: rgba(239, 68, 68, 0.15); border: 2px solid rgba(239, 68, 68, 0.5); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+.aviso-titulo { font-size: 16px; font-weight: 700; color: #fca5a5; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.aviso-conteudo { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+.checklist-resetar { background: rgba(99, 102, 241, 0.05); border-radius: 12px; padding: 15px; margin: 15px 0; }
+.checklist-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; }
+.checklist-item:last-child { margin-bottom: 0; }
+.checklist-checkbox { width: 20px; height: 20px; border: 2px solid rgba(99, 102, 241, 0.5); border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; }
+.checklist-checkbox.checked { background: rgba(99, 102, 241, 0.5); border-color: var(--primary); }
+.checklist-checkbox.checked::after { content: '✓'; color: white; font-weight: bold; font-size: 12px; }
+
+#fileInput { display: none; }
+
+@media (max-width: 768px) {
+.btn { font-size: 11px; padding: 10px 16px; }
+.modal-content { width: 95vw; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div id="alertsContainer" class="alerts-container"></div>
+
+<header>
+<div class="container">
+<h1>📦 Sistema de Gestão de Almoxarifado</h1>
+</div>
+</header>
+
+<div class="container">
+<div class="nav-tabs">
+<button class="nav-tab active" data-tab="dashboard">📊 Dashboard</button>
+<button class="nav-tab" data-tab="produtos">📦 Produtos</button>
+<button class="nav-tab" data-tab="movimentacao">🔄 Movimentação</button>
+<button class="nav-tab" data-tab="consulta">🔍 Consulta</button>
+<button class="nav-tab" data-tab="historico">📜 Histórico</button>
+<button class="nav-tab" data-tab="relatorios">📋 Relatórios</button>
+<button class="nav-tab" data-tab="setores">⚙️ Setores</button>
+<button class="nav-tab" data-tab="dados">💾 Dados</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="tab-content active">
+<div class="card">
+<h2>📊 Dashboard</h2>
+<div class="stats-box">
+<div class="stat-item"><div class="stat-label">Total Produtos</div><div class="stat-value" id="totalProd">0</div></div>
+<div class="stat-item"><div class="stat-label">Estoque Baixo</div><div class="stat-value" id="totalBaixo" style="color: #fca5a5;">0</div></div>
+<div class="stat-item"><div class="stat-label">Movimentações</div><div class="stat-value" id="totalMovs">0</div></div>
+<div class="stat-item"><div class="stat-label">Setores</div><div class="stat-value" id="totalSetores">0</div></div>
+</div>
+</div>
+</div>
+
+<!-- PRODUTOS -->
+<div id="produtos" class="tab-content">
+<div class="card">
+<h2>📦 Produtos</h2>
+<div class="btn-group"><button class="btn btn-success" onclick="abrirModalNovoProduto()">➕ Novo</button></div>
+<div class="search-box" style="margin-bottom: 20px;">
+<input type="text" id="buscaProdutos" placeholder="🔍 Digite código ou nome..." onkeydown="handleBuscaTeclado(event, 'produtos')" oninput="atualizarBuscaProdutos()">
+<div class="search-hints">↑/↓ para navegar | ENTER editar | ESC fechar | DEL deletar</div>
+<div id="resultadosProdutos" class="resultados-lista"></div>
+</div>
+<div class="table-container">
+<table id="tabelaProdutos"><thead><tr><th>Código</th><th>Produto</th><th>Qtde Atual</th><th>Qtde Mín</th><th>Status</th><th>Setor</th></tr></thead><tbody id="tabelaProdutosBody"></tbody></table>
+</div>
+</div>
+</div>
+
+<!-- MOVIMENTAÇÃO -->
+<div id="movimentacao" class="tab-content">
+<div class="card">
+<h2>🔄 Movimentação</h2>
+<div class="btn-group"><button class="btn btn-success" onclick="abrirModalNovaMovimentacao()">➕ Nova</button></div>
+<div class="search-box" style="margin-bottom: 20px;">
+<input type="text" id="buscaMov" placeholder="🔍 Digite código ou nome..." onkeydown="handleBuscaTeclado(event, 'movimentacao')" oninput="atualizarFiltros('movimentacao')">
+<div class="search-hints">↑/↓ para navegar | ENTER selecionar | ESC fechar</div>
+<div id="resultadosMovimentacao" class="resultados-lista"></div>
+</div>
+</div>
+</div>
+
+<!-- CONSULTA -->
+<div id="consulta" class="tab-content">
+<div class="card">
+<h2>🔍 Consultar Produtos</h2>
+<div class="search-box">
+<input type="text" id="buscaConsulta" placeholder="🔍 Digite código ou nome..." onkeydown="handleBuscaTeclado(event, 'consulta')" oninput="atualizarFiltros('consulta')">
+<div class="search-hints">↑/↓ para navegar | ENTER abrir | ESC fechar</div>
+<div id="resultadosConsulta" class="resultados-lista"></div>
+</div>
+</div>
+</div>
+
+<!-- HISTÓRICO -->
+<div id="historico" class="tab-content">
+<div class="card">
+<h2>📜 Histórico</h2>
+<div class="table-container"><table><thead><tr><th>Data</th><th>Código</th><th>Produto</th><th>Tipo</th><th>Qtde</th><th>Setor Origem</th><th>Setor Destino</th><th>Obs</th></tr></thead><tbody id="tabelaHistoricoBody"></tbody></table></div>
+</div>
+</div>
+
+<!-- RELATÓRIOS -->
+<div id="relatorios" class="tab-content">
+<div class="card">
+<h2>📋 Relatórios</h2>
+<div class="grid-3">
+<div class="form-group">
+<label>Tipo de Relatório</label>
+<select id="tipoRel" onchange="mudarTipoRel()">
+<option value="">-- Selecione --</option>
+<option value="posicao">Posição de Estoque</option>
+<option value="movimentacao">Movimentações por Data</option>
+<option value="estoque_baixo">Estoque Abaixo do Mínimo</option>
+<option value="por_setor">Resumo por Setor</option>
+<option value="movimentacao_setor">Movimentações por Setor</option>
+<option value="inventario">Inventário Completo</option>
+</select>
+</div>
+<div class="form-group" id="filtroData" style="display: none;">
+<label>Data Inicial</label>
+<input type="date" id="dataInicial">
+</div>
+<div class="form-group" id="filtroDataFim" style="display: none;">
+<label>Data Final</label>
+<input type="date" id="dataFinal">
+</div>
+<div class="form-group" id="filtroSetor" style="display: none;">
+<label>Selecione o Setor</label>
+<select id="setorRelatorio">
+<option value="">-- Todos os Setores --</option>
+</select>
+</div>
+</div>
+<div class="btn-group" id="botoesRel" style="display: none;">
+<button class="btn btn-primary" onclick="gerarRelatorio()">📊 Gerar</button>
+<button class="btn btn-success" onclick="exportarPDF()">📄 PDF</button>
+</div>
+<div id="resultadoRelatorio" class="relatorio-resultado" style="display: none;"></div>
+</div>
+</div>
+
+<!-- SETORES -->
+<div id="setores" class="tab-content">
+<div class="card">
+<h2>⚙️ Gestão de Setores</h2>
+<div class="btn-group"><button class="btn btn-success" onclick="abrirModalNovoSetor()">➕ Novo Setor</button></div>
+<div class="search-box" style="margin-bottom: 20px;">
+<input type="text" id="buscaSetores" placeholder="🔍 Buscar setor..." onkeydown="handleBuscaTeclado(event, 'setores')" oninput="atualizarFiltros('setores')">
+<div class="search-hints">Digite para filtrar | ↑↓ navegar | ENTER editar | DEL deletar | ESC limpar | Clique no nome = histórico</div>
+</div>
+<div class="setores-lista-container" id="setoresContainer"></div>
+</div>
+</div>
+
+<!-- DADOS -->
+<div id="dados" class="tab-content">
+<div class="card">
+<h2>💾 Gestão de Dados</h2>
+<p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 13px;">Backup e restauração segura de todos os dados do sistema</p>
+
+<div class="dados-container">
+<div class="dados-card">
+<div class="dados-icon">📥</div>
+<div class="dados-titulo">Exportar JSON</div>
+<p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Baixe todos os dados em formato JSON para backup</p>
+<div class="dados-botoes">
+<button class="btn btn-primary" onclick="exportarJSON()">📥 Exportar JSON</button>
+</div>
+</div>
+
+<div class="dados-card">
+<div class="dados-icon">📤</div>
+<div class="dados-titulo">Importar JSON</div>
+<p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Restaure dados a partir de um arquivo JSON anterior</p>
+<div class="dados-botoes">
+<button class="btn btn-warning" onclick="triggerFileImport()">📤 Importar JSON</button>
+</div>
+</div>
+
+<div class="dados-card">
+<div class="dados-icon">📊</div>
+<div class="dados-titulo">Exportar Excel</div>
+<p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Exporte dados para planilha Excel com múltiplas abas</p>
+<div class="dados-botoes">
+<button class="btn btn-success" onclick="exportarExcel()">📊 Exportar Excel</button>
+</div>
+</div>
+
+<div class="dados-card">
+<div class="dados-icon">🔄</div>
+<div class="dados-titulo">Resetar Dados</div>
+<p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Limpa todos os dados para importar base atualizada</p>
+<div class="dados-botoes">
+<button class="btn btn-danger" onclick="abrirModalResetarDados()">🔄 Resetar Tudo</button>
+</div>
+</div>
+</div>
+
+<div class="info-backup">
+<strong>ℹ️ Informações de Backup:</strong><br>
+✓ Total de Produtos: <span id="infoProdutos">0</span><br>
+✓ Total de Movimentações: <span id="infoMovimentacoes">0</span><br>
+✓ Total de Setores: <span id="infoSetores">0</span><br>
+✓ Data/Hora Atual: <span id="infoData">--:--</span>
+</div>
+</div>
+
+</div>
+
+<!-- MODAL RESET DADOS -->
+<div id="modalResetarDados" class="modal-overlay hidden">
+<div class="modal-content">
+<div class="modal-header">
+<h2 class="modal-title">⚠️ Resetar Dados do Sistema</h2>
+<span class="modal-close" onclick="fecharModalResetarDados()">&times;</span>
+</div>
+
+<div class="aviso-resetar">
+<div class="aviso-titulo">⚠️ AÇÃO IRREVERSÍVEL</div>
+<div class="aviso-conteudo">
+Esta ação <strong>apagará TODOS os dados</strong> do sistema de forma <strong>permanente</strong>:<br>
+• Todos os produtos<br>
+• Todas as movimentações e histórico<br>
+• Todos os setores customizados (exceto padrão)
+</div>
+</div>
+
+<div class="checklist-resetar">
+<div style="font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 12px;">Confirme que você:</div>
+<div class="checklist-item">
+<div class="checklist-checkbox" onclick="toggleChecklistResetar(0)" id="check0"></div>
+<label style="cursor: pointer; flex: 1;" onclick="toggleChecklistResetar(0)">Fez backup recente do sistema</label>
+</div>
+</div>
+
+<div class="modal-actions">
+<button class="btn btn-danger" id="btnConfirmarReset" onclick="confirmarResetarDados()" disabled style="opacity: 0.5;">🔄 Resetar Sistema</button>
+<button class="btn btn-secondary" onclick="fecharModalResetarDados()">Cancelar</button>
+</div>
+</div>
+</div>
+
+<!-- MODAL HISTÓRICO SETOR -->
+<div id="modalHistoricoSetor" class="modal-overlay hidden">
+<div class="modal-content">
+<div class="modal-header">
+<h2 class="modal-title" id="historicoSetorTitulo">📊 Histórico do Setor</h2>
+<span class="modal-close" onclick="fecharHistoricoSetor()">&times;</span>
+</div>
+
+<div class="grid-3">
+<div class="form-group">
+<label>Data Inicial</label>
+<input type="date" id="historicoDataInicial" value="2026-01-01">
+</div>
+<div class="form-group">
+<label>Data Final</label>
+<input type="date" id="historicoDataFinal">
+</div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-primary" onclick="filtrarHistoricoSetor()">🔍 Filtrar</button>
+<button class="btn btn-success" onclick="gerarPDFHistoricoSetor()">📄 Gerar PDF</button>
+</div>
+
+<div class="table-container" style="margin-top: 20px;">
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Tipo</th>
+<th>Código</th>
+<th>Produto</th>
+<th>Qtde</th>
+<th>De/Para</th>
+</tr>
+</thead>
+<tbody id="historicoSetorBody"></tbody>
+</table>
+</div>
+
+<div class="modal-actions">
+<button class="btn btn-secondary" onclick="fecharHistoricoSetor()">Fechar</button>
+</div>
+</div>
+</div>
+
+<!-- MODAL PRODUTO -->
+<div id="modalProduto" class="modal-overlay hidden">
+<div class="modal-content">
+<div class="modal-header"><h2 class="modal-title" id="modalTituloProd">Novo Produto</h2><span class="modal-close" onclick="fecharModalProduto()">&times;</span></div>
+<form onsubmit="salvarProduto(event)">
+<div class="form-group"><label>Código *</label><input type="text" id="edtCodigo" required autofocus></div>
+<div class="form-group"><label>Nome *</label><input type="text" id="edtNome" required></div>
+<div class="form-group"><label>Qtde Atual *</label><input type="number" id="edtEstoqueAtual" min="0" required></div>
+<div class="form-group"><label>Qtde Mínima *</label><input type="number" id="edtEstoqueMinimo" min="0" required></div>
+<div class="form-group"><label>Setor *</label><select id="edtSetor" required></select></div>
+<div class="modal-actions"><button type="submit" class="btn btn-success">✓ Salvar</button><button type="button" class="btn btn-secondary" onclick="fecharModalProduto()">✗ Cancelar</button></div>
+</form>
+</div>
+</div>
+
+<!-- MODAL MOVIMENTAÇÃO -->
+<div id="modalMovimentacao" class="modal-overlay hidden">
+<div class="modal-content">
+<div class="modal-header"><h2 class="modal-title">🔄 Movimentação</h2><span class="modal-close" onclick="fecharModalMovimentacao()">&times;</span></div>
+<form onsubmit="salvarMovimentacao(event)">
+<div id="infoProdMov" style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2); border-radius: 8px; padding: 12px; margin-bottom: 15px; display: none;"></div>
+<div class="form-group"><label>Tipo *</label><select id="tipoMov" required><option>ENTRADA</option><option>SAÍDA</option></select></div>
+<div class="form-group"><label>Quantidade *</label><input type="number" id="qtdMovimento" min="1" required></div>
+<div class="form-group"><label>Setor Origem *</label><select id="setorOrigemMov" required></select></div>
+<div class="form-group"><label>Setor Destino *</label><select id="setorDestinoMov" required></select></div>
+<div class="form-group"><label>Data/Hora</label><input type="datetime-local" id="dataHoraMov" required></div>
+<div class="form-group"><label>Observação</label><textarea id="obsMov" rows="3"></textarea></div>
+<div class="modal-actions"><button type="submit" class="btn btn-success">✓ Registrar</button><button type="button" class="btn btn-secondary" onclick="fecharModalMovimentacao()">✗ Cancelar</button></div>
+</form>
+</div>
+</div>
+
+<!-- MODAL CONSULTA -->
+<div id="modalConsulta" class="modal-overlay hidden">
+<div class="modal-content">
+<div class="modal-header"><h2 class="modal-title" id="consultaTitulo">Produto</h2><span class="modal-close" onclick="fecharConsulta()">&times;</span></div>
+<div class="tabs-consulta">
+<button class="tab-consulta active" onclick="trocarTabConsulta('info')">Informações</button>
+<button class="tab-consulta" onclick="trocarTabConsulta('editar')">Editar</button>
+<button class="tab-consulta" onclick="trocarTabConsulta('movs')">Movimentações</button>
+</div>
+<div id="tab-info" class="tab-content-consulta active">
+<div class="info-box"><div class="info-label">Código</div><div class="info-value" id="consultaCodigo">--</div></div>
+<div class="info-box"><div class="info-label">Nome</div><div class="info-value" id="consultaNome">--</div></div>
+<div class="info-box"><div class="info-label">Quantidade Atual</div><div class="info-value" id="consultaQtdAtual">--</div></div>
+<div class="info-box"><div class="info-label">Quantidade Mínima</div><div class="info-value" id="consultaQtdMin">--</div></div>
+<div class="info-box"><div class="info-label">Setor</div><div class="info-value" id="consultaSetor">--</div></div>
+<div class="info-box"><div class="info-label">Status</div><div class="info-value" id="consultaStatus">OK</div></div>
+<div class="info-box"><div class="info-label">Movimentações</div><div class="info-value" id="consultaMov">0</div></div>
+</div>
+<div id="tab-editar" class="tab-content-consulta">
+<form onsubmit="salvarConsultaProduto(event)">
+<div class="form-group"><label>Nome *</label><input type="text" id="consultaEditNome" required></div>
+<div class="form-group"><label>Quantidade Atual *</label><input type="number" id="consultaEditQtdAtual" min="0" required></div>
+<div class="form-group"><label>Quantidade Mínima *</label><input type="number" id="consultaEditQtdMin" min="0" required></div>
+<div class="form-group"><label>Setor *</label><select id="consultaEditSetor" required></select></div>
+<div class="modal-actions"><button type="submit" class="btn btn-success">✓ Atualizar</button><button type="button" class="btn btn-secondary" onclick="fecharConsulta()">✗ Cancelar</button></div>
+</form>
+</div>
+<div id="tab-movs" class="tab-content-consulta">
+<div id="consultaMovsList" style="max-height: 400px; overflow-y: auto;"></div>
+<div id="consultaMovsVazio" style="text-align: center; color: var(--text-secondary); padding: 20px;">Nenhuma movimentação</div>
+</div>
+</div>
+</div>
+
+<!-- MODAL SETOR -->
+<div id="modalSetor" class="modal-overlay hidden">
+<div class="modal-content">
+<div class="modal-header"><h2 class="modal-title" id="modalTituloSetor">Novo Setor</h2><span class="modal-close" onclick="fecharModalSetor()">&times;</span></div>
+<form onsubmit="salvarSetor(event)">
+<div class="form-group"><label>Nome do Setor *</label><input type="text" id="nomeSetor" required autofocus></div>
+<div class="modal-actions"><button type="submit" class="btn btn-success" id="btnSalvarSetor">✓ Salvar</button><button type="button" class="btn btn-secondary" onclick="fecharModalSetor()">✗ Cancelar</button></div>
+</form>
+</div>
+</div>
+
+<input type="file" id="fileInput" accept=".json" onchange="importarJSONArquivo()">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.min.js"></script>
+
+<script>
+let produtos = [];
+let movimentacoes = [];
+let setores = ['ADMINISTRAÇÃO','AGRICULTURA','ALMOXARIFADO','DESENV SOCIAL','BOMBEIROS','COMPRAS','CONSELHO TUTELAR','CRAS','CREAS','CRIANÇA FELIZ','CULTURA','DESENV REGIONAL','EDUCAÇÃO','ESPAÇO AMIGO','ESPORTE','FINANÇAS','GABINETE','GESTÃO PESSOAL','LAR DO ANCIÃO','LICITAÇÃO','LIMPEZA PÚBLICA','MEIO AMBIENTE','MERENDAS','OBRAS E INFRA','POUPATEMPO','PROCURADORIA','RH','SAÚDE','TERCEIRO SETOR','TRÂNSITO','TRANSPORTE','TRIBUTAÇÃO','TURISMO','VIGILÂNCIA SANITÁRIA'];
+let produtoSelecionado = -1;
+let movProdutoSelecionado = -1;
+let setorSelecionado = -1;
+let produtoConsultadoIdx = -1;
+let relatorioAtual = null;
+let setorHistoricoAberto = '';
+let checklistResetar = [false];
+
+const estadoBusca = {
+  produtos: { filtrados: [], selecionado: -1 },
+  movimentacao: { filtrados: [], selecionado: -1 },
+  consulta: { filtrados: [], selecionado: -1 },
+  setores: { filtrados: [], selecionado: -1 }
+};
+
+const dadosPadrao = {
+produtos: [
+{'codigo':'130002','nome':'AÇÚCAR CRISTAL BRANCO TIPO I PACOTE 5KG','estoqueAtual':281,'estoqueMinimo':10,'setor':'MERENDAS'},
+{'codigo':'015814','nome':'CAFÉ 500G','estoqueAtual':5,'estoqueMinimo':30,'setor':'MERENDAS'},
+{'codigo':'015815','nome':'ACHOCOLATADO 1KG','estoqueAtual':8,'estoqueMinimo':20,'setor':'MERENDAS'},
+{'codigo':'015816','nome':'SAL REFINADO 1KG','estoqueAtual':85,'estoqueMinimo':50,'setor':'MERENDAS'},
+{'codigo':'84819010','nome':'ACABAMENTO VÁLVULA DESCARGA CROMADO','estoqueAtual':28,'estoqueMinimo':10,'setor':'ALMOXARIFADO'},
+]
+};
+
+function inicializar() {
+  const p = localStorage.getItem('almox_p');
+  const m = localStorage.getItem('almox_m');
+  
+  produtos = p ? JSON.parse(p) : dadosPadrao.produtos;
+  movimentacoes = m ? JSON.parse(m) : [];
+  
+  console.log('🔍 Produtos carregados:', produtos.length);
+  console.log('🔍 Movimentações carregadas:', movimentacoes.length);
+  
+  document.getElementById('historicoDataFinal').valueAsDate = new Date();
+  if (document.getElementById('dataFinal')) document.getElementById('dataFinal').valueAsDate = new Date();
+  if (document.getElementById('dataInicial')) document.getElementById('dataInicial').valueAsDate = new Date(new Date().setDate(new Date().getDate() - 30));
+  
+  salvarDados();
+  atualizarTudo();
+  atualizarInfoDados();
+  configurarAbas();
+}
+
+function salvarDados() {
+  try {
+    localStorage.setItem('almox_p', JSON.stringify(produtos));
+    localStorage.setItem('almox_m', JSON.stringify(movimentacoes));
+    console.log('✓ Dados salvos: ' + produtos.length + ' produtos, ' + movimentacoes.length + ' movimentações');
+  } catch (e) {
+    console.error('❌ Erro ao salvar dados:', e);
+    mostrarAlerta('❌ Erro ao salvar dados! ' + e.message, 'danger');
+  }
+}
+
+function atualizarTudo() {
+  document.getElementById('totalProd').textContent = produtos.length;
+  document.getElementById('totalBaixo').textContent = produtos.filter(p => p.estoqueAtual < p.estoqueMinimo).length;
+  document.getElementById('totalMovs').textContent = movimentacoes.length;
+  document.getElementById('totalSetores').textContent = setores.length;
+  atualizarTabelaProdutos();
+  atualizarHistorico();
+  atualizarSelectsSetores();
+  atualizarSelectSetorRelatorio();
+  atualizarInfoDados();
+}
+
+function atualizarInfoDados() {
+  document.getElementById('infoProdutos').textContent = produtos.length;
+  document.getElementById('infoMovimentacoes').textContent = movimentacoes.length;
+  document.getElementById('infoSetores').textContent = setores.length;
+  const agora = new Date();
+  document.getElementById('infoData').textContent = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR');
+}
+
+function atualizarTabelaProdutos() {
+  const tbody = document.getElementById('tabelaProdutosBody');
+  tbody.innerHTML = produtos.map((p, i) => `<tr data-idx="${i}" ondblclick="editarProduto(${i})"><td><strong>${p.codigo}</strong></td><td>${p.nome}</td><td>${p.estoqueAtual}</td><td>${p.estoqueMinimo}</td><td>${p.estoqueAtual < p.estoqueMinimo ? '<span class="badge-baixo">BAIXO</span>' : '<span class="badge-ok">OK</span>'}</td><td>${p.setor}</td></tr>`).join('');
+}
+
+function atualizarTabelaProdutosComFiltro(termo) {
+  const tbody = document.getElementById('tabelaProdutosBody');
+  if (!termo) {
+    atualizarTabelaProdutos();
+    return;
+  }
+  const filtrados = produtos.filter(p => 
+    p.codigo.toLowerCase().includes(termo.toLowerCase()) || 
+    p.nome.toLowerCase().includes(termo.toLowerCase())
+  );
+  tbody.innerHTML = filtrados.map((p, i) => {
+    const idx = produtos.indexOf(p);
+    return `<tr data-idx="${idx}" ondblclick="editarProduto(${idx})"><td><strong>${p.codigo}</strong></td><td>${p.nome}</td><td>${p.estoqueAtual}</td><td>${p.estoqueMinimo}</td><td>${p.estoqueAtual < p.estoqueMinimo ? '<span class="badge-baixo">BAIXO</span>' : '<span class="badge-ok">OK</span>'}</td><td>${p.setor}</td></tr>`;
+  }).join('');
+}
+
+function atualizarHistorico() {
+  const tbody = document.getElementById('tabelaHistoricoBody');
+  tbody.innerHTML = movimentacoes.slice(0, 50).map(m => `<tr><td>${m.data}</td><td>${m.codigo}</td><td>${m.nome}</td><td>${m.tipo}</td><td>${m.qtd}</td><td>${m.setorOrigem}</td><td>${m.setorDestino}</td><td>${m.obs || '-'}</td></tr>`).join('');
+}
+
+function atualizarSelectsSetores() {
+  ['edtSetor', 'setorOrigemMov', 'setorDestinoMov', 'consultaEditSetor'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = setores.map(s => `<option>${s}</option>`).join('');
+  });
+}
+
+function atualizarSelectSetorRelatorio() {
+  const selectSetor = document.getElementById('setorRelatorio');
+  if (selectSetor) {
+    selectSetor.innerHTML = '<option value="">-- Todos os Setores --</option>' + setores.map(s => `<option>${s}</option>`).join('');
+  }
+}
+
+function contarProdutosSetor(nomeSetor) {
+  let totalProdutos = produtos.filter(p => p.setor === nomeSetor).length;
+  const movimentacoesDoSetor = movimentacoes.filter(m => m.setorDestino === nomeSetor || m.setorOrigem === nomeSetor).length;
+  return totalProdutos;
+}
+
+function contarMovimentacoesSetor(nomeSetor) {
+  return movimentacoes.filter(m => m.setorDestino === nomeSetor || m.setorOrigem === nomeSetor).length;
+}
+
+function atualizarExibicaoSetores() {
+  const container = document.getElementById('setoresContainer');
+  const termo = document.getElementById('buscaSetores').value.toLowerCase();
+  let setoresExibicao = setores;
+  if (termo) setoresExibicao = setores.filter(s => s.toLowerCase().includes(termo));
+  
+  container.innerHTML = setoresExibicao.map(s => {
+    const totalProdutos = contarProdutosSetor(s);
+    const totalMovimentacoes = contarMovimentacoesSetor(s);
+    const statsText = totalMovimentacoes > 0 ? 
+      `${totalProdutos} produto${totalProdutos !== 1 ? 's' : ''} (+ ${totalMovimentacoes} movs)` :
+      `${totalProdutos} produto${totalProdutos !== 1 ? 's' : ''}`;
+    
+    return `<div class="setor-card"><div class="setor-info" onclick="abrirHistoricoSetor('${s}')" title="Ver histórico"><div class="setor-nome">${s}</div><div class="setor-stats">${statsText}</div></div><div class="setor-acoes"><button class="btn-icon" onclick="abrirEditarSetor('${s}')" title="Editar">✎</button><button class="btn-icon delete" onclick="deletarSetor('${s}')" title="Deletar">🗑</button></div></div>`;
+  }).join('');
+}
+
+function configurarAbas() {
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+      if (tab.getAttribute('data-tab') === 'setores') atualizarExibicaoSetores();
+      if (tab.getAttribute('data-tab') === 'dados') atualizarInfoDados();
+    });
+  });
+}
+
+function atualizarBuscaProdutos() {
+  const termo = document.getElementById('buscaProdutos').value.toLowerCase();
+  const filtrados = produtos.filter(p => 
+    p.codigo.toLowerCase().includes(termo) || 
+    p.nome.toLowerCase().includes(termo)
+  );
+  
+  estadoBusca.produtos.filtrados = filtrados;
+  estadoBusca.produtos.selecionado = -1;
+  
+  const resultados = document.getElementById('resultadosProdutos');
+  
+  if (!termo) {
+    resultados.style.display = 'none';
+    atualizarTabelaProdutos();
+    return;
+  }
+  
+  if (filtrados.length === 0) {
+    resultados.style.display = 'none';
+    atualizarTabelaProdutos();
+    return;
+  }
+  
+  resultados.innerHTML = filtrados.map((p, i) => 
+    `<div class="resultado-item" data-idx="${i}" onclick="selecionarResultado('produtos', ${i})"><div class="resultado-codigo">${p.codigo}</div><div class="resultado-nome">${p.nome}</div><div class="resultado-info">Qtde: ${p.estoqueAtual} | Mín: ${p.estoqueMinimo}</div></div>`
+  ).join('');
+  
+  resultados.style.display = 'block';
+  atualizarTabelaProdutosComFiltro(termo);
+}
+
+function atualizarFiltros(tipo) {
+  if (tipo === 'movimentacao') {
+    const termo = document.getElementById('buscaMov').value.toLowerCase();
+    const filtrados = produtos.filter(p => 
+      p.codigo.toLowerCase().includes(termo) || 
+      p.nome.toLowerCase().includes(termo)
+    );
+    estadoBusca.movimentacao.filtrados = filtrados;
+    estadoBusca.movimentacao.selecionado = -1;
+    const resultados = document.getElementById('resultadosMovimentacao');
+    if (termo && filtrados.length > 0) {
+      resultados.innerHTML = filtrados.map((p, i) => 
+        `<div class="resultado-item" data-idx="${i}" onclick="selecionarResultado('movimentacao', ${i})"><div class="resultado-codigo">${p.codigo}</div><div class="resultado-nome">${p.nome}</div><div class="resultado-info">Qtde: ${p.estoqueAtual}</div></div>`
+      ).join('');
+      resultados.style.display = 'block';
+    } else {
+      resultados.style.display = 'none';
+    }
+  } else if (tipo === 'consulta') {
+    const termo = document.getElementById('buscaConsulta').value.toLowerCase();
+    const filtrados = produtos.filter(p => 
+      p.codigo.toLowerCase().includes(termo) || 
+      p.nome.toLowerCase().includes(termo)
+    );
+    estadoBusca.consulta.filtrados = filtrados;
+    estadoBusca.consulta.selecionado = -1;
+    const resultados = document.getElementById('resultadosConsulta');
+    if (termo && filtrados.length > 0) {
+      resultados.innerHTML = filtrados.map((p, i) => 
+        `<div class="resultado-item" data-idx="${i}" onclick="selecionarResultado('consulta', ${i})"><div class="resultado-codigo">${p.codigo}</div><div class="resultado-nome">${p.nome}</div><div class="resultado-info">Qtde: ${p.estoqueAtual} | Mín: ${p.estoqueMinimo}</div></div>`
+      ).join('');
+      resultados.style.display = 'block';
+    } else {
+      resultados.style.display = 'none';
+    }
+  } else if (tipo === 'setores') {
+    atualizarExibicaoSetores();
+  }
+}
+
+function selecionarResultado(tipo, idx) {
+  if (idx < 0 || idx >= estadoBusca[tipo].filtrados.length) return;
+  executarSelecao(tipo);
+}
+
+function handleBuscaTeclado(e, tipo) {
+  const estado = estadoBusca[tipo];
+  if (!estado) return;
+
+  switch(e.key) {
+    case 'ArrowUp':
+      e.preventDefault();
+      if (estado.selecionado > 0) estado.selecionado--;
+      else estado.selecionado = estado.filtrados.length - 1;
+      atualizarVisualizacaoSelecao(tipo);
+      break;
+    case 'ArrowDown':
+      e.preventDefault();
+      if (estado.selecionado < estado.filtrados.length - 1) estado.selecionado++;
+      else estado.selecionado = 0;
+      atualizarVisualizacaoSelecao(tipo);
+      break;
+    case 'Enter':
+      e.preventDefault();
+      executarSelecao(tipo);
+      break;
+    case 'Escape':
+      if (tipo === 'produtos') {
+        document.getElementById('buscaProdutos').value = '';
+        document.getElementById('resultadosProdutos').style.display = 'none';
+        atualizarTabelaProdutos();
+        estadoBusca.produtos.filtrados = [];
+        estadoBusca.produtos.selecionado = -1;
+      }
+      break;
+  }
+}
+
+function atualizarVisualizacaoSelecao(tipo) {
+  const lista = tipo === 'produtos' ? document.getElementById('resultadosProdutos') :
+                tipo === 'movimentacao' ? document.getElementById('resultadosMovimentacao') :
+                tipo === 'consulta' ? document.getElementById('resultadosConsulta') : null;
+  
+  if (!lista) return;
+  
+  document.querySelectorAll(`#${lista.id} .resultado-item`).forEach((el, i) => {
+    el.classList.remove('selecionado');
+    if (i === estadoBusca[tipo].selecionado) el.classList.add('selecionado');
+  });
+}
+
+function executarSelecao(tipo) {
+  const estado = estadoBusca[tipo];
+  if (estado.selecionado < 0 || estado.filtrados.length === 0) return;
+  
+  if (tipo === 'produtos') {
+    produtoSelecionado = produtos.indexOf(estado.filtrados[estado.selecionado]);
+    editarProduto(produtoSelecionado);
+  } else if (tipo === 'movimentacao') {
+    movProdutoSelecionado = produtos.indexOf(estado.filtrados[estado.selecionado]);
+    abrirModalNovaMovimentacao();
+  } else if (tipo === 'consulta') {
+    produtoConsultadoIdx = produtos.indexOf(estado.filtrados[estado.selecionado]);
+    abrirConsultaProduto();
+  }
+}
+
+function mostrarAlerta(msg, tipo = 'sucesso') {
+  const container = document.getElementById('alertsContainer');
+  const alerta = document.createElement('div');
+  alerta.className = `alert-item ${tipo}`;
+  alerta.innerHTML = `<span>${msg}</span>`;
+  container.appendChild(alerta);
+  setTimeout(() => alerta.remove(), 3000);
+}
+
+function mudarTipoRel() {
+  const tipo = document.getElementById('tipoRel').value;
+  document.getElementById('filtroData').style.display = 'none';
+  document.getElementById('filtroDataFim').style.display = 'none';
+  document.getElementById('filtroSetor').style.display = 'none';
+  document.getElementById('botoesRel').style.display = 'none';
+  document.getElementById('resultadoRelatorio').style.display = 'none';
+  
+  if (!tipo) return;
+  
+  if (tipo === 'movimentacao' || tipo === 'movimentacao_setor') {
+    document.getElementById('filtroData').style.display = 'block';
+    document.getElementById('filtroDataFim').style.display = 'block';
+    if (tipo === 'movimentacao_setor') document.getElementById('filtroSetor').style.display = 'block';
+  }
+  if (tipo === 'por_setor' || tipo === 'movimentacao_setor') {
+    document.getElementById('filtroSetor').style.display = 'block';
+  }
+  
+  document.getElementById('botoesRel').style.display = 'flex';
+}
+
+function gerarRelatorio() {
+  const tipo = document.getElementById('tipoRel').value;
+  if (!tipo) {
+    mostrarAlerta('❌ Selecione um tipo de relatório!', 'danger');
+    return;
+  }
+  
+  let html = '';
+  let dados = [];
+  
+  console.log('📊 Gerando relatório:', tipo);
+  console.log('📊 Total de movimentações:', movimentacoes.length);
+  console.log('📊 Movimentações:', movimentacoes);
+  
+  switch(tipo) {
+    case 'posicao':
+      html = `<h3>Posição de Estoque</h3><table style="width:100%;border-collapse:collapse;margin-top:15px;"><thead><tr style="background:rgba(99,102,241,0.1);"><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Código</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Produto</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:center;font-weight:bold;">Qtde</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:center;font-weight:bold;">Mín</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Setor</th></tr></thead><tbody>${produtos.map(p => `<tr><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${p.codigo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${p.nome}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${p.estoqueAtual}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${p.estoqueMinimo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${p.setor}</td></tr>`).join('')}</tbody></table>`;
+      dados = produtos.map(p => [p.codigo, p.nome, p.estoqueAtual, p.estoqueMinimo, p.setor]);
+      break;
+      
+    case 'estoque_baixo':
+      const baixos = produtos.filter(p => p.estoqueAtual < p.estoqueMinimo);
+      html = `<h3>Estoque Abaixo do Mínimo</h3><table style="width:100%;border-collapse:collapse;margin-top:15px;"><thead><tr style="background:rgba(239,68,68,0.1);"><th style="padding:10px;border:1px solid rgba(239,68,68,0.2);text-align:left;font-weight:bold;">Código</th><th style="padding:10px;border:1px solid rgba(239,68,68,0.2);text-align:left;font-weight:bold;">Produto</th><th style="padding:10px;border:1px solid rgba(239,68,68,0.2);text-align:center;font-weight:bold;">Atual</th><th style="padding:10px;border:1px solid rgba(239,68,68,0.2);text-align:center;font-weight:bold;">Mínimo</th><th style="padding:10px;border:1px solid rgba(239,68,68,0.2);text-align:center;font-weight:bold;">Falta</th><th style="padding:10px;border:1px solid rgba(239,68,68,0.2);text-align:left;font-weight:bold;">Setor</th></tr></thead><tbody>${baixos.map(p => {const falta = p.estoqueMinimo - p.estoqueAtual; return `<tr><td style="padding:8px;border:1px solid rgba(239,68,68,0.1);">${p.codigo}</td><td style="padding:8px;border:1px solid rgba(239,68,68,0.1);">${p.nome}</td><td style="padding:8px;border:1px solid rgba(239,68,68,0.1);text-align:center;">${p.estoqueAtual}</td><td style="padding:8px;border:1px solid rgba(239,68,68,0.1);text-align:center;">${p.estoqueMinimo}</td><td style="padding:8px;border:1px solid rgba(239,68,68,0.1);text-align:center;font-weight:bold;color:#fca5a5;">${falta}</td><td style="padding:8px;border:1px solid rgba(239,68,68,0.1);">${p.setor}</td></tr>`}).join('')}</tbody></table>`;
+      dados = baixos.map(p => {const falta = p.estoqueMinimo - p.estoqueAtual; return [p.codigo, p.nome, p.estoqueAtual, p.estoqueMinimo, falta, p.setor]});
+      break;
+      
+    case 'por_setor':
+      const porSetor = {};
+      produtos.forEach(p => {
+        if (!porSetor[p.setor]) porSetor[p.setor] = [];
+        porSetor[p.setor].push(p);
+      });
+      let tabelaSetor = '';
+      Object.keys(porSetor).sort().forEach(setor => {
+        const total = porSetor[setor].length;
+        tabelaSetor += `<tr style="background:rgba(99,102,241,0.15);"><td colspan="4" style="padding:12px;font-weight:bold;border:1px solid rgba(99,102,241,0.2);">${setor} (${total} produto${total !== 1 ? 's' : ''})</td></tr>`;
+        porSetor[setor].forEach(p => {
+          tabelaSetor += `<tr><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${p.codigo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${p.nome}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${p.estoqueAtual}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${p.estoqueMinimo}</td></tr>`;
+        });
+      });
+      html = `<h3>Resumo por Setor</h3><table style="width:100%;border-collapse:collapse;margin-top:15px;"><thead><tr style="background:rgba(99,102,241,0.1);"><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Código</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Produto</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:center;font-weight:bold;">Qtde</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:center;font-weight:bold;">Mín</th></tr></thead><tbody>${tabelaSetor}</tbody></table>`;
+      break;
+      
+    case 'movimentacao':
+      const dataIni = document.getElementById('dataInicial').value;
+      const dataFim = document.getElementById('dataFinal').value;
+      if (!dataIni || !dataFim) {
+        mostrarAlerta('❌ Selecione data inicial e final!', 'danger');
+        return;
+      }
+      console.log('📊 Datas selecionadas:', dataIni, 'até', dataFim);
+      const filtradas = movimentacoes.filter(m => {
+        console.log('Comparando:', m.data, '>=', dataIni, '&&', m.data, '<=', dataFim);
+        return m.data >= dataIni && m.data <= dataFim;
+      });
+      console.log('📊 Movimentações filtradas:', filtradas.length);
+      html = `<h3>Movimentações por Data (${dataIni} até ${dataFim})</h3><p style="color:var(--text-secondary);margin-bottom:15px;">Total de movimentações: <strong>${filtradas.length}</strong></p><table style="width:100%;border-collapse:collapse;margin-top:15px;"><thead><tr style="background:rgba(99,102,241,0.1);"><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Data</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Tipo</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Código</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Produto</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:center;font-weight:bold;">Qtde</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">De/Para</th></tr></thead><tbody>${filtradas.map(m => `<tr><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.data}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.tipo === 'ENTRADA' ? '<span style="color:#86efac;font-weight:bold;">ENTRADA</span>' : '<span style="color:#fca5a5;font-weight:bold;">SAÍDA</span>'}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.codigo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.nome}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${m.qtd}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.setorOrigem} → ${m.setorDestino}</td></tr>`).join('')}</tbody></table>`;
+      dados = filtradas.map(m => [m.data, m.tipo, m.codigo, m.nome, m.qtd, m.setorOrigem + ' → ' + m.setorDestino]);
+      break;
+      
+    case 'movimentacao_setor':
+      const dataIniSec = document.getElementById('dataInicial').value;
+      const dataFimSec = document.getElementById('dataFinal').value;
+      const setorFiltro = document.getElementById('setorRelatorio').value;
+      
+      if (!dataIniSec || !dataFimSec) {
+        mostrarAlerta('❌ Selecione data inicial e final!', 'danger');
+        return;
+      }
+      
+      console.log('📊 Filtros:', 'DataIni=', dataIniSec, 'DataFim=', dataFimSec, 'Setor=', setorFiltro);
+      
+      let filtradas2 = movimentacoes.filter(m => {
+        const mData = m.data;
+        const inRange = mData >= dataIniSec && mData <= dataFimSec;
+        console.log(`  → ${m.data} entre ${dataIniSec} e ${dataFimSec}? ${inRange}`);
+        return inRange;
+      });
+      
+      console.log('📊 Após filtro de data:', filtradas2.length);
+      
+      if (setorFiltro) {
+        filtradas2 = filtradas2.filter(m => m.setorDestino === setorFiltro || m.setorOrigem === setorFiltro);
+        console.log('📊 Após filtro de setor:', filtradas2.length);
+      }
+      
+      let tabelaMov = '';
+      
+      if (!setorFiltro && filtradas2.length > 0) {
+        const porSetorMov = {};
+        filtradas2.forEach(m => {
+          const setores_mov = [m.setorDestino, m.setorOrigem];
+          setores_mov.forEach(s => {
+            if (!porSetorMov[s]) porSetorMov[s] = [];
+            porSetorMov[s].push(m);
+          });
+        });
+        
+        Object.keys(porSetorMov).sort().forEach(setor => {
+          tabelaMov += `<tr style="background:rgba(99,102,241,0.15);"><td colspan="6" style="padding:12px;font-weight:bold;border:1px solid rgba(99,102,241,0.2);">${setor}</td></tr>`;
+          porSetorMov[setor].forEach(m => {
+            tabelaMov += `<tr><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.data}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.tipo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.codigo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.nome}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${m.qtd}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.setorOrigem} → ${m.setorDestino}</td></tr>`;
+          });
+        });
+      } else if (setorFiltro && filtradas2.length > 0) {
+        tabelaMov += `<tr style="background:rgba(99,102,241,0.15);"><td colspan="6" style="padding:12px;font-weight:bold;border:1px solid rgba(99,102,241,0.2);">${setorFiltro}</td></tr>`;
+        filtradas2.forEach(m => {
+          tabelaMov += `<tr><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.data}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.tipo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.codigo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.nome}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${m.qtd}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.setorOrigem} → ${m.setorDestino}</td></tr>`;
+        });
+      } else {
+        tabelaMov = `<tr><td colspan="6" style="padding:20px;text-align:center;color:var(--text-secondary);">Nenhuma movimentação encontrada para o período e setor selecionados.</td></tr>`;
+      }
+      
+      html = `<h3>Movimentações por Setor (${filtradas2.length} registros)</h3><p style="color:var(--text-secondary);margin-bottom:15px;font-size:12px;">Período: ${dataIniSec} até ${dataFimSec}${setorFiltro ? ` | Setor: ${setorFiltro}` : ''}</p><table style="width:100%;border-collapse:collapse;margin-top:15px;"><thead><tr style="background:rgba(99,102,241,0.1);"><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Data</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Tipo</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Código</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Produto</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:center;font-weight:bold;">Qtde</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">De/Para</th></tr></thead><tbody>${tabelaMov}</tbody></table>`;
+      break;
+      
+    case 'inventario':
+      html = `<h3>Inventário Completo</h3><table style="width:100%;border-collapse:collapse;margin-top:15px;"><thead><tr style="background:rgba(99,102,241,0.1);"><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Código</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Nome</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:center;font-weight:bold;">Qtde</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:center;font-weight:bold;">Mín</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Setor</th></tr></thead><tbody>${produtos.map(p => `<tr><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${p.codigo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${p.nome}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${p.estoqueAtual}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${p.estoqueMinimo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${p.setor}</td></tr>`).join('')}</tbody></table>`;
+      dados = produtos.map(p => [p.codigo, p.nome, p.estoqueAtual, p.estoqueMinimo, p.setor]);
+      break;
+  }
+  
+  relatorioAtual = { tipo, html, dados };
+  document.getElementById('resultadoRelatorio').innerHTML = html;
+  document.getElementById('resultadoRelatorio').style.display = 'block';
+  mostrarAlerta(`✓ Relatório gerado com ${dados.length} registro${dados.length !== 1 ? 's' : ''}!`, 'sucesso');
+}
+
+function exportarPDF() {
+  if (!relatorioAtual || !relatorioAtual.dados || relatorioAtual.dados.length === 0) {
+    mostrarAlerta('❌ Gere um relatório com dados antes de exportar!', 'danger');
+    return;
+  }
+  
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  const agora = new Date();
+  
+  doc.setFontSize(22);
+  doc.setTextColor(99, 102, 241);
+  doc.text('ALMOXARIFADO', 105, 20, { align: 'center' });
+  
+  doc.setFontSize(14);
+  doc.setTextColor(50, 50, 50);
+  
+  let titulo = '';
+  switch(relatorioAtual.tipo) {
+    case 'posicao': titulo = 'Posição de Estoque'; break;
+    case 'estoque_baixo': titulo = 'Estoque Abaixo do Mínimo'; break;
+    case 'por_setor': titulo = 'Resumo por Setor'; break;
+    case 'movimentacao': titulo = 'Movimentações por Data'; break;
+    case 'movimentacao_setor': titulo = 'Movimentações por Setor'; break;
+    case 'inventario': titulo = 'Inventário Completo'; break;
+  }
+  
+  doc.text(titulo, 105, 32, { align: 'center' });
+  
+  doc.setFontSize(10);
+  doc.setTextColor(80, 80, 80);
+  doc.text(`Emissão: ${agora.toLocaleDateString('pt-BR')} ${agora.toLocaleTimeString('pt-BR')}`, 15, 45);
+  
+  const colunas = relatorioAtual.tipo === 'posicao' || relatorioAtual.tipo === 'inventario' ? ['Código', 'Produto', 'Qtde', 'Mín', 'Setor'] :
+                  relatorioAtual.tipo === 'estoque_baixo' ? ['Código', 'Produto', 'Atual', 'Mínimo', 'Falta', 'Setor'] :
+                  relatorioAtual.tipo === 'movimentacao' || relatorioAtual.tipo === 'movimentacao_setor' ? ['Data', 'Tipo', 'Código', 'Produto', 'Qtde', 'De/Para'] :
+                  ['Código', 'Produto', 'Qtde', 'Mín', 'Setor'];
+  
+  doc.autoTable({
+    head: [colunas],
+    body: relatorioAtual.dados,
+    startY: 55,
+    headStyles: { fillColor: [99, 102, 241], textColor: [255, 255, 255], fontSize: 9, fontStyle: 'bold' },
+    bodyStyles: { fontSize: 8, textColor: [50, 50, 50] },
+    alternateRowStyles: { fillColor: [245, 245, 245] },
+    columnStyles: relatorioAtual.tipo === 'posicao' || relatorioAtual.tipo === 'inventario' ? { 1: { cellWidth: 60 } } : {}
+  });
+  
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    const pageSize = doc.internal.pageSize;
+    const pageHeight = pageSize.getHeight();
+    const pageWidth = pageSize.getWidth();
+    doc.setFontSize(8);
+    doc.setTextColor(150, 150, 150);
+    doc.text(`Página ${i} de ${totalPages}`, pageWidth - 25, pageHeight - 10, { align: 'right' });
+  }
+  
+  doc.save(`relatorio_${relatorioAtual.tipo}_${agora.toISOString().split('T')[0]}.pdf`);
+  mostrarAlerta('✓ PDF gerado com sucesso!', 'sucesso');
+}
+
+function exportarJSON() {
+  try {
+    const agora = new Date();
+    const backup = {
+      backup: {
+        versao: '1.5',
+        data_backup: agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR'),
+        timestamp_backup: agora.getTime(),
+        descricao: 'Backup completo do Almoxarifado'
+      },
+      dados: {
+        produtos: produtos,
+        movimentacoes: movimentacoes,
+        setores: setores
+      },
+      integridade: {
+        total_produtos: produtos.length,
+        total_movimentacoes: movimentacoes.length,
+        total_setores: setores.length,
+        hash: 'almox_' + agora.getTime()
+      }
+    };
+    
+    const dataStr = JSON.stringify(backup, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `almoxarifado_backup_${agora.toISOString().split('T')[0]}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+    
+    mostrarAlerta('✓ Backup JSON exportado com sucesso!', 'sucesso');
+    console.log('✓ Backup exportado:', backup);
+  } catch (erro) {
+    mostrarAlerta('❌ Erro ao exportar JSON: ' + erro.message, 'danger');
+    console.error('Erro:', erro);
+  }
+}
+
+function triggerFileImport() {
+  document.getElementById('fileInput').click();
+}
+
+function importarJSONArquivo() {
+  const file = document.getElementById('fileInput').files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const conteudo = JSON.parse(e.target.result);
+      
+      if (!conteudo.dados || !conteudo.dados.produtos || !conteudo.dados.movimentacoes || !conteudo.dados.setores) {
+        mostrarAlerta('❌ Arquivo JSON inválido! Estrutura incorreta.', 'danger');
+        return;
+      }
+      
+      if (confirm('⚠️ Isso sobrescreverá todos os dados atuais!\\n\\nDeseja continuar?')) {
+        produtos = conteudo.dados.produtos;
+        movimentacoes = conteudo.dados.movimentacoes;
+        setores = conteudo.dados.setores;
+        
+        salvarDados();
+        atualizarTudo();
+        
+        mostrarAlerta('✓ Dados importados com sucesso! ' + produtos.length + ' produtos carregados.', 'sucesso');
+        console.log('✓ Importação concluída:', conteudo);
+      }
+    } catch (erro) {
+      mostrarAlerta('❌ Erro ao importar JSON: ' + erro.message, 'danger');
+      console.error('Erro:', erro);
+    }
+  };
+  reader.readAsText(file);
+  document.getElementById('fileInput').value = '';
+}
+
+function exportarExcel() {
+  try {
+    const wb = XLSX.utils.book_new();
+    
+    const wsProdutos = XLSX.utils.json_to_sheet(produtos);
+    XLSX.utils.book_append_sheet(wb, wsProdutos, 'Produtos');
+    
+    const wsMovimentacoes = XLSX.utils.json_to_sheet(movimentacoes);
+    XLSX.utils.book_append_sheet(wb, wsMovimentacoes, 'Movimentações');
+    
+    const wsSetores = XLSX.utils.json_to_sheet(setores.map(s => ({ setor: s })));
+    XLSX.utils.book_append_sheet(wb, wsSetores, 'Setores');
+    
+    const agora = new Date();
+    XLSX.writeFile(wb, `almoxarifado_${agora.toISOString().split('T')[0]}.xlsx`);
+    
+    mostrarAlerta('✓ Excel exportado com sucesso!', 'sucesso');
+  } catch (erro) {
+    mostrarAlerta('❌ Erro ao exportar Excel: ' + erro.message, 'danger');
+    console.error('Erro:', erro);
+  }
+}
+
+function abrirModalResetarDados() {
+  document.getElementById('modalResetarDados').classList.remove('hidden');
+}
+
+function fecharModalResetarDados() {
+  document.getElementById('modalResetarDados').classList.add('hidden');
+  checklistResetar = [false];
+  document.getElementById('check0').classList.remove('checked');
+  document.getElementById('btnConfirmarReset').disabled = true;
+  document.getElementById('btnConfirmarReset').style.opacity = '0.5';
+}
+
+function toggleChecklistResetar(idx) {
+  checklistResetar[idx] = !checklistResetar[idx];
+  document.getElementById(`check${idx}`).classList.toggle('checked');
+  const btnConfirmar = document.getElementById('btnConfirmarReset');
+  if (checklistResetar[0]) {
+    btnConfirmar.disabled = false;
+    btnConfirmar.style.opacity = '1';
+  } else {
+    btnConfirmar.disabled = true;
+    btnConfirmar.style.opacity = '0.5';
+  }
+}
+
+function confirmarResetarDados() {
+  if (!checklistResetar[0]) {
+    mostrarAlerta('❌ Confirme que fez backup!', 'danger');
+    return;
+  }
+  
+  if (confirm('⚠️ ÚLTIMA CHANCE: Todos os dados serão apagados permanentemente!\n\nTem certeza?')) {
+    produtos = [];
+    movimentacoes = [];
+    setores = ['ADMINISTRAÇÃO','AGRICULTURA','ALMOXARIFADO','DESENV SOCIAL','BOMBEIROS','COMPRAS','CONSELHO TUTELAR','CRAS','CREAS','CRIANÇA FELIZ','CULTURA','DESENV REGIONAL','EDUCAÇÃO','ESPAÇO AMIGO','ESPORTE','FINANÇAS','GABINETE','GESTÃO PESSOAL','LAR DO ANCIÃO','LICITAÇÃO','LIMPEZA PÚBLICA','MEIO AMBIENTE','MERENDAS','OBRAS E INFRA','POUPATEMPO','PROCURADORIA','RH','SAÚDE','TERCEIRO SETOR','TRÂNSITO','TRANSPORTE','TRIBUTAÇÃO','TURISMO','VIGILÂNCIA SANITÁRIA'];
+    
+    salvarDados();
+    atualizarTudo();
+    fecharModalResetarDados();
+    mostrarAlerta('✓ Sistema resetado! Todos os dados foram apagados.', 'sucesso');
+  }
+}
+
+function abrirModalNovoProduto() {
+  produtoSelecionado = -1;
+  document.getElementById('modalTituloProd').textContent = '➕ Novo Produto';
+  document.getElementById('edtCodigo').disabled = false;
+  document.getElementById('edtCodigo').value = '';
+  document.getElementById('edtNome').value = '';
+  document.getElementById('edtEstoqueAtual').value = '0';
+  document.getElementById('edtEstoqueMinimo').value = '10';
+  document.getElementById('modalProduto').classList.remove('hidden');
+  document.getElementById('edtCodigo').focus();
+}
+
+function editarProduto(idx) {
+  if (idx < 0 || idx >= produtos.length) return;
+  produtoSelecionado = idx;
+  const p = produtos[idx];
+  document.getElementById('modalTituloProd').textContent = '✎ Editar Produto';
+  document.getElementById('edtCodigo').disabled = true;
+  document.getElementById('edtCodigo').value = p.codigo;
+  document.getElementById('edtNome').value = p.nome;
+  document.getElementById('edtEstoqueAtual').value = p.estoqueAtual;
+  document.getElementById('edtEstoqueMinimo').value = p.estoqueMinimo;
+  document.getElementById('edtSetor').value = p.setor;
+  document.getElementById('modalProduto').classList.remove('hidden');
+}
+
+function fecharModalProduto() {
+  document.getElementById('modalProduto').classList.add('hidden');
+  produtoSelecionado = -1;
+  
+  // CORREÇÃO DO BUG: LIMPAR COMPLETAMENTE O ESTADO DE BUSCA
+  document.getElementById('buscaProdutos').value = '';
+  estadoBusca.produtos.filtrados = [];
+  estadoBusca.produtos.selecionado = -1;
+  document.getElementById('resultadosProdutos').style.display = 'none';
+}
+
+function salvarProduto(e) {
+  e.preventDefault();
+  const dados = {
+    codigo: document.getElementById('edtCodigo').value,
+    nome: document.getElementById('edtNome').value,
+    estoqueAtual: parseInt(document.getElementById('edtEstoqueAtual').value),
+    estoqueMinimo: parseInt(document.getElementById('edtEstoqueMinimo').value),
+    setor: document.getElementById('edtSetor').value
+  };
+  
+  if (produtoSelecionado >= 0) {
+    produtos[produtoSelecionado] = dados;
+    mostrarAlerta('✓ Produto atualizado!', 'sucesso');
+  } else {
+    if (produtos.some(p => p.codigo === dados.codigo)) {
+      mostrarAlerta('❌ Código já existe!', 'danger');
+      return;
+    }
+    produtos.push(dados);
+    mostrarAlerta('✓ Produto criado!', 'sucesso');
+  }
+  
+  salvarDados();
+  atualizarTudo();
+  fecharModalProduto();
+}
+
+function abrirModalNovaMovimentacao() {
+  if (movProdutoSelecionado < 0 || movProdutoSelecionado >= produtos.length) {
+    mostrarAlerta('❌ Selecione um produto!', 'danger');
+    return;
+  }
+  const p = produtos[movProdutoSelecionado];
+  document.getElementById('infoProdMov').innerHTML = `<strong>${p.nome}</strong> (${p.codigo}) - Estoque: ${p.estoqueAtual}`;
+  document.getElementById('infoProdMov').style.display = 'block';
+  document.getElementById('setorOrigemMov').value = p.setor;
+  document.getElementById('qtdMovimento').value = '';
+  document.getElementById('dataHoraMov').value = new Date().toISOString().slice(0, 16);
+  document.getElementById('tipoMov').value = 'ENTRADA';
+  document.getElementById('obsMov').value = '';
+  document.getElementById('modalMovimentacao').classList.remove('hidden');
+}
+
+function fecharModalMovimentacao() {
+  document.getElementById('modalMovimentacao').classList.add('hidden');
+  movProdutoSelecionado = -1;
+  document.getElementById('buscaMov').value = '';
+  estadoBusca.movimentacao.filtrados = [];
+  estadoBusca.movimentacao.selecionado = -1;
+  document.getElementById('resultadosMovimentacao').style.display = 'none';
+  document.getElementById('infoProdMov').style.display = 'none';
+}
+
+function salvarMovimentacao(e) {
+  e.preventDefault();
+  
+  if (movProdutoSelecionado < 0 || movProdutoSelecionado >= produtos.length) {
+    mostrarAlerta('❌ Produto não selecionado!', 'danger');
+    return;
+  }
+  
+  const p = produtos[movProdutoSelecionado];
+  const qtd = parseInt(document.getElementById('qtdMovimento').value) || 0;
+  const tipo = document.getElementById('tipoMov').value;
+  const setorOrigem = document.getElementById('setorOrigemMov').value;
+  const setorDestino = document.getElementById('setorDestinoMov').value;
+  const dataHoraInput = document.getElementById('dataHoraMov').value;
+  const obs = document.getElementById('obsMov').value.trim();
+  
+  if (qtd <= 0) {
+    mostrarAlerta('❌ Digite uma quantidade válida!', 'danger');
+    return;
+  }
+  
+  if (tipo === 'SAÍDA' && qtd > p.estoqueAtual) {
+    mostrarAlerta('❌ Quantidade maior que estoque! (Disponível: ' + p.estoqueAtual + ')', 'danger');
+    return;
+  }
+  
+  if (!dataHoraInput) {
+    mostrarAlerta('❌ Selecione data e hora!', 'danger');
+    return;
+  }
+  
+  if (!setorOrigem || !setorDestino) {
+    mostrarAlerta('❌ Selecione os setores!', 'danger');
+    return;
+  }
+  
+  if (tipo === 'ENTRADA') {
+    p.estoqueAtual += qtd;
+  } else if (tipo === 'SAÍDA') {
+    p.estoqueAtual -= qtd;
+  }
+  
+  const dataHora = new Date(dataHoraInput);
+  const dataFormatada = dataHora.toLocaleDateString('pt-BR');
+  const horaFormatada = dataHora.toLocaleTimeString('pt-BR');
+  
+  const novaMovimentacao = {
+    codigo: p.codigo,
+    nome: p.nome,
+    tipo: tipo,
+    qtd: qtd,
+    setorOrigem: setorOrigem,
+    setorDestino: setorDestino,
+    data: dataFormatada,
+    hora: horaFormatada,
+    obs: obs,
+    timestamp: dataHora.getTime()
+  };
+  
+  movimentacoes.unshift(novaMovimentacao);
+  
+  salvarDados();
+  
+  atualizarTudo();
+  atualizarExibicaoSetores();
+  
+  fecharModalMovimentacao();
+  
+  mostrarAlerta('✓ Movimentação de ' + qtd + ' registrada em ' + setorDestino + '!', 'sucesso');
+  
+  console.log('✓ Movimentação salva:', novaMovimentacao);
+  console.log('Total de movimentações:', movimentacoes.length);
+}
+
+function abrirConsultaProduto() {
+  if (produtoConsultadoIdx < 0 || produtoConsultadoIdx >= produtos.length) return;
+  const p = produtos[produtoConsultadoIdx];
+  
+  document.getElementById('consultaTitulo').textContent = p.nome.substring(0, 40);
+  document.getElementById('consultaCodigo').textContent = p.codigo;
+  document.getElementById('consultaNome').textContent = p.nome;
+  document.getElementById('consultaQtdAtual').textContent = p.estoqueAtual;
+  document.getElementById('consultaQtdMin').textContent = p.estoqueMinimo;
+  document.getElementById('consultaSetor').textContent = p.setor;
+  
+  const statusEl = document.getElementById('consultaStatus');
+  if (p.estoqueAtual < p.estoqueMinimo) {
+    statusEl.textContent = 'ESTOQUE BAIXO';
+    statusEl.style.color = '#fca5a5';
+  } else {
+    statusEl.textContent = 'OK';
+    statusEl.style.color = '#86efac';
+  }
+  
+  const movsDoP = movimentacoes.filter(m => m.codigo === p.codigo);
+  document.getElementById('consultaMov').textContent = movsDoP.length;
+  
+  document.getElementById('consultaEditNome').value = p.nome;
+  document.getElementById('consultaEditQtdAtual').value = p.estoqueAtual;
+  document.getElementById('consultaEditQtdMin').value = p.estoqueMinimo;
+  document.getElementById('consultaEditSetor').value = p.setor;
+  
+  document.querySelectorAll('.tab-consulta').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content-consulta').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-consulta')[0].classList.add('active');
+  document.getElementById('tab-info').classList.add('active');
+  
+  document.getElementById('modalConsulta').classList.remove('hidden');
+}
+
+function preencherMovimentacoesProduto() {
+  if (produtoConsultadoIdx < 0 || produtoConsultadoIdx >= produtos.length) return;
+  const p = produtos[produtoConsultadoIdx];
+  const movsDoP = movimentacoes.filter(m => m.codigo === p.codigo);
+  const list = document.getElementById('consultaMovsList');
+  const vazio = document.getElementById('consultaMovsVazio');
+  
+  if (movsDoP.length === 0) {
+    list.style.display = 'none';
+    vazio.style.display = 'block';
+    return;
+  }
+  
+  vazio.style.display = 'none';
+  list.style.display = 'block';
+  list.innerHTML = movsDoP.map(m => `<div class="info-box"><div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="font-weight: 600; color: var(--primary-light);">${m.tipo}</span><span style="font-size: 10px; color: var(--text-secondary);">${m.data} ${m.hora}</span></div><div style="font-size: 12px; color: var(--text);"><div>Qtde: <strong>${m.qtd}</strong></div><div style="margin-top: 5px; font-size: 11px; color: var(--text-secondary);">${m.setorOrigem} → ${m.setorDestino}${m.obs ? `<div style="margin-top: 5px;">Obs: ${m.obs}</div>` : ''}</div></div></div>`).join('');
+}
+
+function salvarConsultaProduto(e) {
+  e.preventDefault();
+  if (produtoConsultadoIdx < 0 || produtoConsultadoIdx >= produtos.length) return;
+  
+  const dados = {
+    codigo: produtos[produtoConsultadoIdx].codigo,
+    nome: document.getElementById('consultaEditNome').value,
+    estoqueAtual: parseInt(document.getElementById('consultaEditQtdAtual').value),
+    estoqueMinimo: parseInt(document.getElementById('consultaEditQtdMin').value),
+    setor: document.getElementById('consultaEditSetor').value
+  };
+  
+  produtos[produtoConsultadoIdx] = dados;
+  salvarDados();
+  atualizarTudo();
+  mostrarAlerta('✓ Produto atualizado!', 'sucesso');
+  abrirConsultaProduto();
+}
+
+function fecharConsulta() {
+  document.getElementById('modalConsulta').classList.add('hidden');
+  produtoConsultadoIdx = -1;
+}
+
+function trocarTabConsulta(tab) {
+  document.querySelectorAll('.tab-consulta').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content-consulta').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById(`tab-${tab}`).classList.add('active');
+  if (tab === 'movs') preencherMovimentacoesProduto();
+}
+
+function abrirModalNovoSetor() {
+  setorSelecionado = -1;
+  document.getElementById('modalTituloSetor').textContent = '➕ Novo Setor';
+  document.getElementById('nomeSetor').value = '';
+  document.getElementById('btnSalvarSetor').textContent = 'Criar';
+  document.getElementById('modalSetor').classList.remove('hidden');
+  document.getElementById('nomeSetor').focus();
+}
+
+function abrirEditarSetor(nomeSetor) {
+  setorSelecionado = setores.indexOf(nomeSetor);
+  if (setorSelecionado >= 0) {
+    document.getElementById('modalTituloSetor').textContent = '✎ Editar Setor';
+    document.getElementById('nomeSetor').value = nomeSetor;
+    document.getElementById('btnSalvarSetor').textContent = 'Atualizar';
+    document.getElementById('modalSetor').classList.remove('hidden');
+  }
+}
+
+function fecharModalSetor() {
+  document.getElementById('modalSetor').classList.add('hidden');
+  setorSelecionado = -1;
+}
+
+function salvarSetor(e) {
+  e.preventDefault();
+  const nome = document.getElementById('nomeSetor').value.toUpperCase().trim();
+  
+  if (!nome) {
+    mostrarAlerta('❌ Digite um nome!', 'danger');
+    return;
+  }
+  
+  if (setorSelecionado >= 0) {
+    const anterior = setores[setorSelecionado];
+    setores[setorSelecionado] = nome;
+    produtos.forEach(p => { if (p.setor === anterior) p.setor = nome; });
+    mostrarAlerta('✓ Setor atualizado!', 'sucesso');
+  } else {
+    if (setores.includes(nome)) {
+      mostrarAlerta('❌ Setor já existe!', 'danger');
+      return;
+    }
+    setores.push(nome);
+    setores.sort();
+    mostrarAlerta('✓ Setor criado!', 'sucesso');
+  }
+  
+  salvarDados();
+  atualizarTudo();
+  atualizarExibicaoSetores();
+  fecharModalSetor();
+}
+
+function deletarSetor(nomeSetor) {
+  if (!confirm(`Deletar setor "${nomeSetor}"?`)) return;
+  if (produtos.some(p => p.setor === nomeSetor)) {
+    mostrarAlerta('❌ Setor tem produtos!', 'danger');
+    return;
+  }
+  const idx = setores.indexOf(nomeSetor);
+  if (idx >= 0) {
+    setores.splice(idx, 1);
+    salvarDados();
+    atualizarTudo();
+    atualizarExibicaoSetores();
+    mostrarAlerta('✓ Deletado!', 'sucesso');
+  }
+}
+
+function abrirHistoricoSetor(nomeSetor) {
+  setorHistoricoAberto = nomeSetor;
+  document.getElementById('historicoSetorTitulo').textContent = `📊 Histórico - ${nomeSetor}`;
+  document.getElementById('modalHistoricoSetor').classList.remove('hidden');
+  filtrarHistoricoSetor();
+}
+
+function fecharHistoricoSetor() {
+  document.getElementById('modalHistoricoSetor').classList.add('hidden');
+  setorHistoricoAberto = '';
+}
+
+function filtrarHistoricoSetor() {
+  if (!setorHistoricoAberto) return;
+  
+  const dataIni = new Date(document.getElementById('historicoDataInicial').value);
+  const dataFim = new Date(document.getElementById('historicoDataFinal').value);
+  
+  const movsSetor = movimentacoes.filter(m => {
+    const d = new Date(m.data.split('/').reverse().join('-'));
+    const isInRange = d >= dataIni && d <= dataFim;
+    const isRelevante = m.setorDestino === setorHistoricoAberto || m.setorOrigem === setorHistoricoAberto;
+    return isInRange && isRelevante;
+  });
+  
+  const tbody = document.getElementById('historicoSetorBody');
+  tbody.innerHTML = movsSetor.map(m => {
+    const isEntrada = m.setorDestino === setorHistoricoAberto;
+    const deParaText = isEntrada ? `De: ${m.setorOrigem}` : `Para: ${m.setorDestino}`;
+    const badge = isEntrada ? '<span class="badge-entrada">ENTRADA</span>' : '<span class="badge-saida">SAÍDA</span>';
+    return `<tr><td>${m.data}</td><td>${badge}</td><td>${m.codigo}</td><td>${m.nome}</td><td>${isEntrada ? '+' : '-'}${m.qtd}</td><td>${deParaText}</td></tr>`;
+  }).join('');
+}
+
+function gerarPDFHistoricoSetor() {
+  if (!setorHistoricoAberto) return;
+  
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+  const agora = new Date();
+  
+  doc.setFontSize(18);
+  doc.setTextColor(99, 102, 241);
+  doc.text(`HISTÓRICO - ${setorHistoricoAberto}`, 148, 20, { align: 'center' });
+  
+  doc.setFontSize(10);
+  doc.setTextColor(80, 80, 80);
+  doc.text(`Emissão: ${agora.toLocaleDateString('pt-BR')} ${agora.toLocaleTimeString('pt-BR')}`, 15, 35);
+  
+  const dataIni = new Date(document.getElementById('historicoDataInicial').value);
+  const dataFim = new Date(document.getElementById('historicoDataFinal').value);
+  const movsSetor = movimentacoes.filter(m => {
+    const d = new Date(m.data.split('/').reverse().join('-'));
+    return (d >= dataIni && d <= dataFim) && (m.setorDestino === setorHistoricoAberto || m.setorOrigem === setorHistoricoAberto);
+  });
+  
+  const dados = movsSetor.map(m => {
+    const isEntrada = m.setorDestino === setorHistoricoAberto;
+    const deParaText = isEntrada ? `De: ${m.setorOrigem}` : `Para: ${m.setorDestino}`;
+    return [m.data, isEntrada ? 'ENTRADA' : 'SAÍDA', m.codigo, m.nome, (isEntrada ? '+' : '-') + m.qtd, deParaText];
+  });
+  
+  doc.autoTable({
+    head: [['Data', 'Tipo', 'Código', 'Produto', 'Qtde', 'De/Para']],
+    body: dados,
+    startY: 45,
+    headStyles: { fillColor: [99, 102, 241], textColor: [255, 255, 255], fontSize: 9, fontStyle: 'bold' },
+    bodyStyles: { fontSize: 8 },
+    margin: { top: 45, right: 15, bottom: 15, left: 15 }
+  });
+  
+  doc.save(`historico_${setorHistoricoAberto}_${agora.toISOString().split('T')[0]}.pdf`);
+  mostrarAlerta('✓ PDF gerado!', 'sucesso');
+}
+
+document.addEventListener('DOMContentLoaded', inicializar);
+
+// Fechar modais ao clicar fora
+document.querySelectorAll('.modal-overlay').forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.add('hidden');
+    }
+  });
+});
+</script>
+</body>
+</html>
