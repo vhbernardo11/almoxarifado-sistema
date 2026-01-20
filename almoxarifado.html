@@ -1584,6 +1584,16 @@ function gerarPDFHistoricoSetor() {
   mostrarAlerta('✓ PDF gerado!', 'sucesso');
 }
 
+
+  // Carregar dados do arquivo JSON
+fetch('data.json')
+  .then(response => response.json())
+  .then(dataJSON => {
+    if (dataJSON && dataJSON.produtos) {
+      dadosPadrao.produtos = dataJSON.produtos;
+    }
+  })
+  .catch(error => console.log('Utilizando dados padrão:', error));
 document.addEventListener('DOMContentLoaded', inicializar);
 
 // Fechar modais ao clicar fora
