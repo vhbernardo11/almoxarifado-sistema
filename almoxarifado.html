@@ -1322,8 +1322,8 @@ function salvarMovimentacao(e) {
   }
   
   const dataHora = new Date(dataHoraInput);
-  const dataFormatada = dataHora.toLocaleDateString('pt-BR');
-  const horaFormatada = dataHora.toLocaleTimeString('pt-BR');
+const dataFormatada = dataHora.toLocaleDateString('pt-BR');
+        const horaFormatada = dataHora.toLocaleTimeString('pt-BR');  const horaFormatada = dataHora.toLocaleTimeString('pt-BR');
   
   const novaMovimentacao = {
     codigo: p.codigo,
@@ -1332,8 +1332,8 @@ function salvarMovimentacao(e) {
     qtd: qtd,
     setorOrigem: setorOrigem,
     setorDestino: setorDestino,
-    data: dataFormatada,
-    hora: horaFormatada,
+data: dataFormatada,
+  hora: horaFormatada,
     obs: obs,
     timestamp: dataHora.getTime()
   };
