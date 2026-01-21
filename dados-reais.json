@@ -514,21 +514,651 @@
     "setor": "ALMOXARIFADO",
     "preco": 0
   }
-]     {"codigo": "84819010", "nome": "ACABAMENTO VLVULA DESCARGA CROMADO DOCOL SIMILAR", "estoqueAtual": 28, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
-      {"codigo": "015815", "nome": "ACHOCOLATADO EM P 1KG", "estoqueAtual": 21, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
-      {"codigo": "130002", "nome": "ACAR CRISTAL BRANCO TIPO I PACOTE 5KG", "estoqueAtual": 261, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
-      {"codigo": "029483", "nome": "ADAPTADOR E40PE27", "estoqueAtual": 35, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
-      {"codigo": "853908", "nome": "ADAPTADOR TOMADA PINO DUPLO 1PT 10A", "estoqueAtual": 25, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
-      {"codigo": "110009", "nome": "GUA PERFUMADA ODORIZANTE LONGA AO 340ML", "estoqueAtual": 48, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
-      {"codigo": "110002", "nome": "GUA SANITRIA FRASCO 2L", "estoqueAtual": 622, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
-      {"codigo": "110003", "nome": "LCOOL ETLICO HIDRATADO GEL 70 INPM 460G", "estoqueAtual": 288, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
-      {"codigo": "110500", "nome": "LCOOL LQUIDO 70", "estoqueAtual": 210, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
-      {"codigo": "82032010", "nome": "ALICATE UNIVERSAL 8", "estoqueAtual": 2, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
-      {"codigo": "100049", "nome": "ALMOFADA PARA CARIMBO N. 2 COR VERMELHA", "estoqueAtual": 3, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
-      {"codigo": "110005", "nome": "AMACIANTE ROUPAS FRASCO 2L COR AZUL", "estoqueAtual": 274, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
-      {"codigo": "130001", "nome": "AMIDO DE MILHO", "estoqueAtual": 5, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
-      {"codigo": "100004", "nome": "ANOTE E COLE NA COR AMARELA C1 UND 76 X 102 MM", "estoqueAtual": 143, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"}
-    ],
+
+ ]    [
+  {
+    "codigo": "100020",
+    "nome": "CANETA ESFEROGRÁFICA VERMELHA",
+    "estoqueAtual": 659,
+    "estoqueTotal": 759,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100021",
+    "nome": "CANETA MARCA TEXTO AMARELA UNID",
+    "estoqueAtual": 23,
+    "estoqueTotal": 43,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100023",
+    "nome": "CANETA MARCA TEXTO AZUL",
+    "estoqueAtual": 1,
+    "estoqueTotal": 101,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100022",
+    "nome": "CANETA MARCA TEXTO LARANJA",
+    "estoqueAtual": 0,
+    "estoqueTotal": 100,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100024",
+    "nome": "CANETA MARCA TEXTO ROSA",
+    "estoqueAtual": 11,
+    "estoqueTotal": 111,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100025",
+    "nome": "CANETA MARCA TEXTO VERDE",
+    "estoqueAtual": 18,
+    "estoqueTotal": 118,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100026",
+    "nome": "CANETA MARCA TEXTO VIOLETA",
+    "estoqueAtual": 17,
+    "estoqueTotal": 117,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "85322501",
+    "nome": "CAPACITOR PERMANENTE C CABO 250V",
+    "estoqueAtual": 10,
+    "estoqueTotal": 110,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "320004",
+    "nome": "CARTOLINA AMARELA",
+    "estoqueAtual": 6,
+    "estoqueTotal": 56,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "320005",
+    "nome": "CARTOLINA AZUL",
+    "estoqueAtual": 5,
+    "estoqueTotal": 55,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "320001",
+    "nome": "CARTOLINA BRANCA",
+    "estoqueAtual": 5,
+    "estoqueTotal": 55,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "320003",
+    "nome": "CARTOLINA VERDE",
+    "estoqueAtual": 5,
+    "estoqueTotal": 55,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "330001",
+    "nome": "CELOFANE AMARELO",
+    "estoqueAtual": 50,
+    "estoqueTotal": 100,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "330002",
+    "nome": "CELOFANE AZUL",
+    "estoqueAtual": 50,
+    "estoqueTotal": 100,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "330004",
+    "nome": "CELOFANE LILÁS",
+    "estoqueAtual": 50,
+    "estoqueTotal": 100,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "330009",
+    "nome": "CELOFANE ROSA",
+    "estoqueAtual": 50,
+    "estoqueTotal": 100,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "330007",
+    "nome": "CELOFANE VERDE",
+    "estoqueAtual": 40,
+    "estoqueTotal": 90,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "330008",
+    "nome": "CELOFANE VERMELHO",
+    "estoqueAtual": 40,
+    "estoqueTotal": 90,
+    "setor": "FINANÇAS",
+    "preco": 0
+  },
+  {
+    "codigo": "120015",
+    "nome": "CERA LÍQUIDA ALTO BRILHO INCOLOR 5L",
+    "estoqueAtual": 15,
+    "estoqueTotal": 20,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110017",
+    "nome": "CERA LÍQUIDA PISO VERDE 800ML",
+    "estoqueAtual": 22,
+    "estoqueTotal": 27,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110020",
+    "nome": "CESTO COLETA LIXO 15L COM PEDAL",
+    "estoqueAtual": 23,
+    "estoqueTotal": 33,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110023",
+    "nome": "CESTO COLETA LIXO 50L COM TAMPA",
+    "estoqueAtual": 70,
+    "estoqueTotal": 80,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110019",
+    "nome": "CESTO GRANDE PLÁSTICO 100L COM TAMPA",
+    "estoqueAtual": 29,
+    "estoqueTotal": 39,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110114",
+    "nome": "CESTO LIXO BANHEIRO 20L COM TAMPA",
+    "estoqueAtual": 56,
+    "estoqueTotal": 71,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "130007",
+    "nome": "CHÁ DE ERVA MATE 200GR",
+    "estoqueAtual": 90,
+    "estoqueTotal": 190,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "029229",
+    "nome": "CHIMICHURRI 500G",
+    "estoqueAtual": 2,
+    "estoqueTotal": 3,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100044",
+    "nome": "CLIPS PARA PAPEL TAMANHO 2/0",
+    "estoqueAtual": 46,
+    "estoqueTotal": 96,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100045",
+    "nome": "CLIPS PARA PAPEL TAMANHO 3/0",
+    "estoqueAtual": 60,
+    "estoqueTotal": 110,
+    "setor": "FINANÇAS",
+    "preco": 0
+  },
+  {
+    "codigo": "100046",
+    "nome": "CLIPS PARA PAPEL TAMANHO 4/0",
+    "estoqueAtual": 73,
+    "estoqueTotal": 123,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100047",
+    "nome": "CLIPS PARA PAPEL TAMANHO 6/0",
+    "estoqueAtual": 62,
+    "estoqueTotal": 112,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100048",
+    "nome": "CLIPS PARA PAPEL TAMANHO 8/0",
+    "estoqueAtual": 56,
+    "estoqueTotal": 106,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110025",
+    "nome": "CLORO HIPOCLORITO SÓDIO 5L",
+    "estoqueAtual": 0,
+    "estoqueTotal": 30,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120006",
+    "nome": "COADOR DE PAPEL PARA CAFÉ 103 G 30UN",
+    "estoqueAtual": 66,
+    "estoqueTotal": 116,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "001102",
+    "nome": "COCO RALADO, PACOTE COM 100G",
+    "estoqueAtual": 0,
+    "estoqueTotal": 5,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100240",
+    "nome": "COLA BRANCA 35 G OU 40 G EMBALAGEM COM 12 UNIDADES",
+    "estoqueAtual": 72,
+    "estoqueTotal": 102,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100239",
+    "nome": "COLA BRANCA 90GR",
+    "estoqueAtual": 27,
+    "estoqueTotal": 57,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100229",
+    "nome": "COLA BRANCA, NÃO TÓXICA, LAVÁVEL 1 KG",
+    "estoqueAtual": 6,
+    "estoqueTotal": 11,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100034",
+    "nome": "COLA EM BASTÃO NÃO TÓXICA 10 GR",
+    "estoqueAtual": 60,
+    "estoqueTotal": 110,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100180",
+    "nome": "COLA GLITER COLORIDA EMBALAGEM C 6 UND",
+    "estoqueAtual": 15,
+    "estoqueTotal": 25,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100270",
+    "nome": "COLA TEK BOND ADESIVO INSTANTÂNEO",
+    "estoqueAtual": 23,
+    "estoqueTotal": 33,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100036",
+    "nome": "COLCHETE LATONADO N° 08",
+    "estoqueAtual": 22,
+    "estoqueTotal": 32,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100038",
+    "nome": "COLCHETE LATONADO N° 14",
+    "estoqueAtual": 15,
+    "estoqueTotal": 25,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120026",
+    "nome": "COLHER MESA SOPA POLIPROPILENO AÇO INOX",
+    "estoqueAtual": 16,
+    "estoqueTotal": 26,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "029478",
+    "nome": "CONECTOR PERFURANTE GRANDE",
+    "estoqueAtual": 55,
+    "estoqueTotal": 155,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "029473",
+    "nome": "CONECTOR PERFURANTE PEQUENO",
+    "estoqueAtual": 59,
+    "estoqueTotal": 159,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120029",
+    "nome": "CONJUNTO MANTIMENTOS PLÁSTICO 5 PEÇAS",
+    "estoqueAtual": 9,
+    "estoqueTotal": 109,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120004",
+    "nome": "COPO DESCARTÁVEL 180ML C/ 100 COPOS AGUA",
+    "estoqueAtual": 1442,
+    "estoqueTotal": 1642,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120005",
+    "nome": "COPO DESCARTÁVEL 50ML C/ 100 COPOS CAFÉ",
+    "estoqueAtual": 5,
+    "estoqueTotal": 55,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100042",
+    "nome": "CORRETIVO EM FITA",
+    "estoqueAtual": 57,
+    "estoqueTotal": 107,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100041",
+    "nome": "CORRETIVO LÍQUIDO BASE DE ÁGUA 18 ML",
+    "estoqueAtual": 11,
+    "estoqueTotal": 41,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100043",
+    "nome": "CORRETIVO LÍQUIDO TIPO CANETA CORRETIVA 8 ML A BASE DE ÁGUA SECAGEM RÁPIDA",
+    "estoqueAtual": 33,
+    "estoqueTotal": 83,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "005926",
+    "nome": "CREME DE LEITE, UNIDADE COM 200G",
+    "estoqueAtual": 20,
+    "estoqueTotal": 35,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110027",
+    "nome": "DESENTUPIDOR PIA PLÁSTICO 15-20CM",
+    "estoqueAtual": 16,
+    "estoqueTotal": 116,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110029",
+    "nome": "DESINFETANTE LÍQUIDO CONCENTRADO HOSPITALAR 5L",
+    "estoqueAtual": 34,
+    "estoqueTotal": 84,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110028",
+    "nome": "DESINFETANTE PEDRA VASO SANITÁRIO 35G",
+    "estoqueAtual": 125,
+    "estoqueTotal": 225,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110119",
+    "nome": "DESINFETANTE SANITÁRIO FLORAL 2L",
+    "estoqueAtual": 322,
+    "estoqueTotal": 472,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110117",
+    "nome": "DESINFETANTE SANITÁRIO LAVANDA 2L",
+    "estoqueAtual": 45,
+    "estoqueTotal": 145,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110118",
+    "nome": "DESINFETANTE SANITÁRIO ÓLEO EUCALIPTO 2L",
+    "estoqueAtual": 494,
+    "estoqueTotal": 594,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110031",
+    "nome": "DESINFETANTE SANITÁRIO ÓLEO PINHO 2L",
+    "estoqueAtual": 41,
+    "estoqueTotal": 141,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110104",
+    "nome": "DETERGENTE LAVA LOUÇAS NEUTRO 500ML",
+    "estoqueAtual": 252,
+    "estoqueTotal": 452,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110035",
+    "nome": "DISPENSER PAPEL HIGIÊNICO ROLO GRANDE",
+    "estoqueAtual": 4,
+    "estoqueTotal": 9,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110034",
+    "nome": "DISPENSER PAPEL TOALHA 400 FOLHAS",
+    "estoqueAtual": 2,
+    "estoqueTotal": 12,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110036",
+    "nome": "DISPENSER SABONETE LÍQUIDO 800ML",
+    "estoqueAtual": 31,
+    "estoqueTotal": 51,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "985897",
+    "nome": "DISPLAY PORTA FOLHA PRONTUÁRIO A4 PAREDE ACRÍLICO VERTICAL. ALTURA 31CM, LARGURA 22CM, PROFUNDIDADE 2CM",
+    "estoqueAtual": 2,
+    "estoqueTotal": 12,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100050",
+    "nome": "ELÁSTICO PARA DINHEIRO N 18 PACOTE C 500G",
+    "estoqueAtual": 9,
+    "estoqueTotal": 39,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100069",
+    "nome": "ENVELOPE CARTEIRA OFICIO BRANCO 114 X 229 MM",
+    "estoqueAtual": 780,
+    "estoqueTotal": 880,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100181",
+    "nome": "ENVELOPE SACO KRAFT AMARELO OURO 176 X 250 MM",
+    "estoqueAtual": 504,
+    "estoqueTotal": 604,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100052",
+    "nome": "ENVELOPE SACO KRAFT AMARELO OURO 310 X 410 CM",
+    "estoqueAtual": 56,
+    "estoqueTotal": 156,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100065",
+    "nome": "ENVELOPE SACO KRAFT AMARELO OURO A4 240 X 340 MM",
+    "estoqueAtual": 274,
+    "estoqueTotal": 374,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100070",
+    "nome": "ENVELOPE SACO KRAFT PARDO 310 X 410 MM",
+    "estoqueAtual": 6,
+    "estoqueTotal": 106,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100064",
+    "nome": "ENVELOPE SACO KRAFT PARDO A4 240 X 340 MM",
+    "estoqueAtual": 569,
+    "estoqueTotal": 669,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100072",
+    "nome": "ENVELOPE SACO OFF-SET BRANCO 176 X 250 MM",
+    "estoqueAtual": 1107,
+    "estoqueTotal": 1207,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100141",
+    "nome": "ENVELOPE SACO OFF-SET BRANCO 240 X 340 MM",
+    "estoqueAtual": 561,
+    "estoqueTotal": 661,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120059",
+    "nome": "ESCORREDOR ARROZ PLÁSTICO 2,25L",
+    "estoqueAtual": 5,
+    "estoqueTotal": 25,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "019521",
+    "nome": "ESCORREDOR MACARRÃO INDUSTRIAL 14,5L ALUMÍNIO",
+    "estoqueAtual": 3,
+    "estoqueTotal": 23,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110037",
+    "nome": "ESCOVA LIMPEZA ROUPAS NYLON BASE MADEIRA",
+    "estoqueAtual": 23,
+    "estoqueTotal": 73,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110038",
+    "nome": "ESCOVA LIMPEZA SANITÁRIA CABO SUPORTE",
+    "estoqueAtual": 20,
+    "estoqueTotal": 70,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110122",
+    "nome": "ESPANADOR CABO MADEIRA 40CM",
+    "estoqueAtual": 11,
+    "estoqueTotal": 41,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110039",
+    "nome": "ESPONJA AÇO PACOTE 8 UN 60G",
+    "estoqueAtual": 527,
+    "estoqueTotal": 727,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110040",
+    "nome": "ESPONJA SINTÉTICA DUPLA FACE 110X75X20MM",
+    "estoqueAtual": 1463,
+    "estoqueTotal": 1763,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  }
+]
+
+      
     "movimentacoes": [],
     "setores": ["ADMINISTRAO","AGRICULTURA","ALMOXARIFADO","DESENV SOCIAL","BOMBEIROS","COMPRAS","CONSELHO TUTELAR","CRAS","CREAS","CRIANA FELIZ","CULTURA","DESENV REGIONAL","EDUCAO","ESPAO AMIGO","ESPORTE","FINANAS","GABINETE","GESTO PESSOAL","LAR DO ANCIO","LICITAO","LIMPEZA PBLICA","MEIO AMBIENTE","MERENDAS","OBRAS E INFRA","POUPATEMPO","PROCURADORIA","RH","SADE","TERCEIRO SETOR","TRNSITO","TRANSPORTE","TRIBUTAO","TURISMO","VIGILNCIA SANITRIA"]
   }
