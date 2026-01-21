@@ -166,9 +166,6 @@ tbody tr:hover { background: rgba(99, 102, 241, 0.08); }
 .modal-content { width: 95vw; padding: 20px; }
 }
 </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
 
@@ -579,7 +576,6 @@ function salvarDados() {
     localStorage.setItem('almox_m', JSON.stringify(movimentacoes));
     console.log('✓ Dados salvos: ' + produtos.length + ' produtos, ' + movimentacoes.length + ' movimentações');
   } catch (e) {
-        document.querySelector('.nav-tab').classList.add('active'); document.querySelector('.tab-content').classList.add('active');
     console.error('❌ Erro ao salvar dados:', e);
     mostrarAlerta('❌ Erro ao salvar dados! ' + e.message, 'danger');
   }
@@ -899,31 +895,18 @@ function gerarRelatorio() {
       break;
       
     case 'movimentacao':
-      
+      const dataIni = document.getElementById('dataInicial').value;
       const dataFim = document.getElementById('dataFinal').value;
       if (!dataIni || !dataFim) {
-                // Converter datas de YYYY-MM-DD para DD/MM/YYYY para comparação correta
-                const converterData = (dataDMY) => { const [ano, mes, dia] = dataDMY.split('-'); return `${dia}/${mes}/${ano}`; };
-                dataIni = converterData(dataIni);
-                dataFim = converterData(dataFim);
-                // Converter para número (YYYYMMDD) para comparação numérica
-                const dataParaNumero = (dataDMY) => { const [dia, mes, ano] = dataDMY.split('/'); return parseInt(ano + mes + dia); };
-  
-        
         mostrarAlerta('❌ Selecione data inicial e final!', 'danger');
         return;
       }
       console.log('📊 Datas selecionadas:', dataIni, 'até', dataFim);
       const filtradas = movimentacoes.filter(m => {
         console.log('Comparando:', m.data, '>=', dataIni, '&&', m.data, '<=', dataFim);
-const dataMovNum = dataParaNumero(m.data); const dataIniNum = dataParaNumero(dataIni); const dataFimNum = dataParaNumero(dataFim); return dataMovNum >= dataIniNum && dataMovNum <= dataFimNum;
-                        }); }};
-  
+        return m.data >= dataIni && m.data <= dataFim;
       });
-      const dataMovNum = dataParaNumero(m.data);
-                  const dataIniNum = dataParaNumero(dataIni);
-                  const dataFimNum = dataParaNumero(dataFim);
-                  return dataMovNum >= dataIniNum && dataMovNum <= dataFimNum;
+      console.log('📊 Movimentações filtradas:', filtradas.length);
       html = `<h3>Movimentações por Data (${dataIni} até ${dataFim})</h3><p style="color:var(--text-secondary);margin-bottom:15px;">Total de movimentações: <strong>${filtradas.length}</strong></p><table style="width:100%;border-collapse:collapse;margin-top:15px;"><thead><tr style="background:rgba(99,102,241,0.1);"><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Data</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Tipo</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Código</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">Produto</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:center;font-weight:bold;">Qtde</th><th style="padding:10px;border:1px solid rgba(99,102,241,0.2);text-align:left;font-weight:bold;">De/Para</th></tr></thead><tbody>${filtradas.map(m => `<tr><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.data}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.tipo === 'ENTRADA' ? '<span style="color:#86efac;font-weight:bold;">ENTRADA</span>' : '<span style="color:#fca5a5;font-weight:bold;">SAÍDA</span>'}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.codigo}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.nome}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);text-align:center;">${m.qtd}</td><td style="padding:8px;border:1px solid rgba(99,102,941,0.1);">${m.setorOrigem} → ${m.setorDestino}</td></tr>`).join('')}</tbody></table>`;
       dados = filtradas.map(m => [m.data, m.tipo, m.codigo, m.nome, m.qtd, m.setorOrigem + ' → ' + m.setorDestino]);
       break;
@@ -937,19 +920,12 @@ const dataMovNum = dataParaNumero(m.data); const dataIniNum = dataParaNumero(dat
         mostrarAlerta('❌ Selecione data inicial e final!', 'danger');
         return;
       }
-          // Converter datas de YYYY-MM-DD para DD/MM/YYYY
-          const converterDataSec = (dataDMY) => { const [ano, mes, dia] = dataDMY.split('-'); return `${dia}/${mes}/${ano}`; };
-          dataIniSec = converterDataSec(dataIniSec);
-          dataFimSec = converterDataSec(dataFimSec);
-          // Converter para número para comparação numérica
-          const dataParaNumeroSec = (dataDMY) => { const [dia, mes, ano] = dataDMY.split('/'); return parseInt(ano + mes + dia); };
-  
       
       console.log('📊 Filtros:', 'DataIni=', dataIniSec, 'DataFim=', dataFimSec, 'Setor=', setorFiltro);
       
       let filtradas2 = movimentacoes.filter(m => {
         const mData = m.data;
-const dataMovNum = dataParaNumeroSec(mData); const dataIniNum = dataParaNumeroSec(dataIniSec); const dataFimNum = dataParaNumeroSec(dataFimSec); return dataMovNum >= dataIniNum && dataMovNum <= dataFimNum;
+        const inRange = mData >= dataIniSec && mData <= dataFimSec;
         console.log(`  → ${m.data} entre ${dataIniSec} e ${dataFimSec}? ${inRange}`);
         return inRange;
       });
@@ -1343,8 +1319,8 @@ function salvarMovimentacao(e) {
   }
   
   const dataHora = new Date(dataHoraInput);
-const dataFormatada = dataHora.toLocaleDateString('pt-BR');
-        const horaFormatada = dataHora.toLocaleTimeString('pt-BR');  
+  const dataFormatada = dataHora.toLocaleDateString('pt-BR');
+  const horaFormatada = dataHora.toLocaleTimeString('pt-BR');
   
   const novaMovimentacao = {
     codigo: p.codigo,
@@ -1353,8 +1329,8 @@ const dataFormatada = dataHora.toLocaleDateString('pt-BR');
     qtd: qtd,
     setorOrigem: setorOrigem,
     setorDestino: setorDestino,
-data: dataFormatada,
-  hora: horaFormatada,
+    data: dataFormatada,
+    hora: horaFormatada,
     obs: obs,
     timestamp: dataHora.getTime()
   };
@@ -1605,16 +1581,6 @@ function gerarPDFHistoricoSetor() {
   mostrarAlerta('✓ PDF gerado!', 'sucesso');
 }
 
-
-  // Carregar dados do arquivo JSON
-fetch('data.json')
-  .then(response => response.json())
-  .then(dataJSON => {
-    if (dataJSON && dataJSON.produtos) {
-      dadosPadrao.produtos = dataJSON.produtos;
-    }
-  })
-  .catch(error => console.log('Utilizando dados padrão:', error));
 document.addEventListener('DOMContentLoaded', inicializar);
 
 // Fechar modais ao clicar fora
