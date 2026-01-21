@@ -579,6 +579,7 @@ function salvarDados() {
     localStorage.setItem('almox_m', JSON.stringify(movimentacoes));
     console.log('✓ Dados salvos: ' + produtos.length + ' produtos, ' + movimentacoes.length + ' movimentações');
   } catch (e) {
+        document.querySelector('.nav-tab').classList.add('active'); document.querySelector('.tab-content').classList.add('active');
     console.error('❌ Erro ao salvar dados:', e);
     mostrarAlerta('❌ Erro ao salvar dados! ' + e.message, 'danger');
   }
@@ -898,7 +899,7 @@ function gerarRelatorio() {
       break;
       
     case 'movimentacao':
-      const dataIni = document.getElementById('dataInicial').value;
+      
       const dataFim = document.getElementById('dataFinal').value;
       if (!dataIni || !dataFim) {
                 // Converter datas de YYYY-MM-DD para DD/MM/YYYY para comparação correta
