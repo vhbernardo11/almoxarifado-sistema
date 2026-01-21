@@ -945,7 +945,7 @@ const dataMovNum = dataParaNumero(m.data); const dataIniNum = dataParaNumero(dat
       
       let filtradas2 = movimentacoes.filter(m => {
         const mData = m.data;
-        const inRange = mData >= dataIniSec && mData <= dataFimSec;
+const dataMovNum = dataParaNumeroSec(mData); const dataIniNum = dataParaNumeroSec(dataIniSec); const dataFimNum = dataParaNumeroSec(dataFimSec); return dataMovNum >= dataIniNum && dataMovNum <= dataFimNum;
         console.log(`  → ${m.data} entre ${dataIniSec} e ${dataFimSec}? ${inRange}`);
         return inRange;
       });
