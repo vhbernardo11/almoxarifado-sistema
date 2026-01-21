@@ -2,17 +2,38 @@
   "produtos": [
     {
       "codigo": "130002",
-      "descricao": "Produto Exemplo 1",
-      "categoria": "Categoria A",
-      "preco": "99.90",
-      "estoque": 50
+      "nome": "AÇÚCAR CRISTAL BRANCO TIPO I PACOTE 5KG",
+      "estoqueAtual": 281,
+      "estoqueMinimo": 10,
+      "setor": "MERENDAS"
     },
     {
       "codigo": "015814",
-      "descricao": "Produto Exemplo 2",
-      "categoria": "Categoria B",
-      "preco": "150.00",
-      "estoque": 30
+      "nome": "CAFÉ 500G",
+      "estoqueAtual": 5,
+      "estoqueMinimo": 30,
+      "setor": "MERENDAS"
+    },
+    {
+      "codigo": "015815",
+      "nome": "ACHOCOLATADO 1KG",
+      "estoqueAtual": 8,
+      "estoqueMinimo": 20,
+      "setor": "MERENDAS"
+    },
+    {
+      "codigo": "015816",
+      "nome": "SAL REFINADO 1KG",
+      "estoqueAtual": 85,
+      "estoqueMinimo": 50,
+      "setor": "MERENDAS"
+    },
+    {
+      "codigo": "84819010",
+      "nome": "ACABAMENTO VÁLVULA DESCARGA CROMADO",
+      "estoqueAtual": 28,
+      "estoqueMinimo": 10,
+      "setor": "ALMOXARIFADO"
     }
   ]
 }
