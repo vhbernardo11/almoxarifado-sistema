@@ -933,6 +933,13 @@ const dataMovNum = dataParaNumero(m.data); const dataIniNum = dataParaNumero(dat
         mostrarAlerta('❌ Selecione data inicial e final!', 'danger');
         return;
       }
+          // Converter datas de YYYY-MM-DD para DD/MM/YYYY
+          const converterDataSec = (dataDMY) => { const [ano, mes, dia] = dataDMY.split('-'); return `${dia}/${mes}/${ano}`; };
+          dataIniSec = converterDataSec(dataIniSec);
+          dataFimSec = converterDataSec(dataFimSec);
+          // Converter para número para comparação numérica
+          const dataParaNumeroSec = (dataDMY) => { const [dia, mes, ano] = dataDMY.split('/'); return parseInt(ano + mes + dia); };
+  
       
       console.log('📊 Filtros:', 'DataIni=', dataIniSec, 'DataFim=', dataFimSec, 'Setor=', setorFiltro);
       
