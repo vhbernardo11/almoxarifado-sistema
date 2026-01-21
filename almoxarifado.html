@@ -1606,7 +1606,7 @@ function gerarPDFHistoricoSetor() {
 
 
   // Carregar dados do arquivo JSON
-fetch('estoque.json')
+fetch('data.json')
   .then(response => response.json())
   .then(dataJSON => {
     if (dataJSON && dataJSON.produtos) {
