@@ -1,0 +1,18 @@
+{
+  "versao": "1.5",
+  "dataBackup": "20012026 161952",
+  "timestampBackup": 1768936792799,
+  "descricao": "Backup completo do Almoxarifado - 666 Produtos",
+  "produtos": [
+    {"codigo": "84819010", "nome": "ACABAMENTO VLVULA DESCARGA CROMADO DOCOL SIMILAR", "estoqueAtual": 28, "estoqueTotal": 38, "estoqueMinimo": 0, "setor": "ALMOXARIFADO", "preco": 0},
+    {"codigo": "015815", "nome": "ACHOCOLATADO EM P 1KG", "estoqueAtual": 21, "estoqueTotal": 16, "estoqueMinimo": 10, "setor": "ALMOXARIFADO", "preco": 0},
+    {"codigo": "130002", "nome": "ACAR CRISTAL BRANCO TIPO I PACOTE 5KG", "estoqueAtual": 261, "estoqueTotal": 361, "estoqueMinimo": 10, "setor": "ALMOXARIFADO", "preco": 0},
+    {"codigo": "029483", "nome": "ADAPTADOR E40PE27", "estoqueAtual": 35, "estoqueTotal": 55, "estoqueMinimo": 0, "setor": "ALMOXARIFADO", "preco": 0}
+  ],
+  "movimentacoes": [
+    {"codigo": "130002", "nome": "ACAR CRISTAL BRANCO TIPO I PACOTE 5KG", "tipo": "ENTRADA", "qtd": 10, "setorOrigem": "ALMOXARIFADO", "setorDestino": "AGRICULTURA", "data": "20012026", "hora": "122700"},
+    {"codigo": "110009", "nome": "GUA PERFUMADA ODORIZANTE LONGA AO 340ML", "tipo": "ENTRADA", "qtd": 11, "setorOrigem": "ALMOXARIFADO", "setorDestino": "FINANAS", "data": "20012026", "hora": "115800"}
+  ],
+  "setores": ["ADMINISTRAO", "AGRICULTURA", "ALMOXARIFADO", "DESENV SOCIAL", "BOMBEIROS", "COMPRAS", "CONSELHO TUTELAR", "CRAS", "CREAS", "CRIANA FELIZ", "CULTURA", "DESENV REGIONAL", "EDUCAO", "ESPAO AMIGO", "ESPORTE", "FINANAS", "GABINETE", "GESTO PESSOAL", "LAR DO ANCIO", "LICITAO", "LIMPEZA PBLICA", "MEIO AMBIENTE", "MERENDAS", "OBRAS E INFRA", "POUPATEMPO", "PROCURADORIA", "RH", "SADE", "TERCEIRO SETOR", "TRANSPORTE", "TRIBUTAO", "TURISMO", "VIGILNCIA SANITRIA"],
+  "totais": {"totalProdutos": 666, "totalMovimentacoes": 14, "totalSetores": 34}
+}
