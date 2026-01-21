@@ -554,7 +554,25 @@ function inicializar() {
   const p = localStorage.getItem('almox_p');
   const m = localStorage.getItem('almox_m');
   
-  produtos = p ? JSON.parse(p) : dadosPadrao.produtos;
+    // Tentar carregar dados remotos se localStorage estiver vazio
+    if (!p || JSON.parse(p).length === 0) {
+        fetch('https://raw.githubusercontent.com/vhbernardo11/almoxarifado-sistema/main/dados-reais.json')
+            .then(r => r.json())
+            .then(backup => {
+                produtos = backup.dados.produtos;
+                movimentacoes = backup.dados.movimentacoes || [];
+                setores = backup.dados.setores || setores;
+                salvarDados();
+                atualizarTudo();
+                console.log('✅ Dados carregados do servidor:', produtos.length, 'produtos');
+            })
+            .catch(() => {
+                produtos = dadosPadrao.produtos;
+                console.log('⚠️ Usando dados padr\u00e3o');
+            });
+    } else {
+        produtos = JSON.parse(p);
+    }
   movimentacoes = m ? JSON.parse(m) : [];
   
   console.log('🔍 Produtos carregados:', produtos.length);
