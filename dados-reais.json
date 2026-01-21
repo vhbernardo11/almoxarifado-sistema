@@ -1,7 +1,520 @@
 {
   "dados": {
     "produtos": [
-      {"codigo": "84819010", "nome": "ACABAMENTO VLVULA DESCARGA CROMADO DOCOL SIMILAR", "estoqueAtual": 28, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
+ [
+  {
+    "codigo": "84819010",
+    "nome": "ACABAMENTO VÁLVULA DESCARGA CROMADO DOCOL SIMILAR",
+    "estoqueAtual": 28,
+    "estoqueTotal": 38,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "015815",
+    "nome": "ACHOCOLATADO EM PÓ 1KG",
+    "estoqueAtual": 21,
+    "estoqueTotal": 16,
+    "setor": "ALMOXARIFADO",
+    "preco": 0,
+    "estoqueMinimo": 10
+  },
+  {
+    "codigo": "130002",
+    "nome": "AÇÚCAR CRISTAL BRANCO TIPO I PACOTE 5KG",
+    "estoqueAtual": 261,
+    "estoqueMinimo": 10,
+    "setor": "ALMOXARIFADO"
+  },
+  {
+    "codigo": "029483",
+    "nome": "ADAPTADOR E40PE27",
+    "estoqueAtual": 35,
+    "estoqueTotal": 55,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "853908",
+    "nome": "ADAPTADOR TOMADA PINO DUPLO 1P+T 10A",
+    "estoqueAtual": 25,
+    "estoqueTotal": 125,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110009",
+    "nome": "ÁGUA PERFUMADA ODORIZANTE LONGA AÇÃO 340ML",
+    "estoqueAtual": 48,
+    "estoqueTotal": 107,
+    "setor": "ALMOXARIFADO",
+    "preco": 0,
+    "estoqueMinimo": 10
+  },
+  {
+    "codigo": "110002",
+    "nome": "ÁGUA SANITÁRIA FRASCO 2L",
+    "estoqueAtual": 622,
+    "estoqueTotal": 922,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110003",
+    "nome": "ÁLCOOL ETÍLICO HIDRATADO GEL 70 INPM 460G",
+    "estoqueAtual": 288,
+    "estoqueTotal": 388,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110500",
+    "nome": "ÁLCOOL LÍQUIDO 70",
+    "estoqueAtual": 210,
+    "estoqueTotal": 310,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "82032010",
+    "nome": "ALICATE UNIVERSAL 8",
+    "estoqueAtual": 2,
+    "estoqueTotal": 12,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100049",
+    "nome": "ALMOFADA PARA CARIMBO N. 2 COR VERMELHA",
+    "estoqueAtual": 3,
+    "estoqueTotal": 13,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110005",
+    "nome": "AMACIANTE ROUPAS FRASCO 2L COR AZUL",
+    "estoqueAtual": 274,
+    "estoqueTotal": 374,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "130001",
+    "nome": "AMIDO DE MILHO",
+    "estoqueAtual": 5,
+    "estoqueTotal": 8,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100004",
+    "nome": "ANOTE E COLE NA COR AMARELA C1 UND 76 X 102 MM BLOCO DE RECADOS",
+    "estoqueAtual": 143,
+    "estoqueTotal": 193,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100003",
+    "nome": "ANOTE E COLE NA COR AMARELA C4 UND 38 X 50 MM BLOCO DE RECADOS",
+    "estoqueAtual": 9,
+    "estoqueTotal": 59,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100231",
+    "nome": "APAGADOR PARA QUADRO BRANCO",
+    "estoqueAtual": 12,
+    "estoqueTotal": 17,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100006",
+    "nome": "APONTADOR DE METAL",
+    "estoqueAtual": 406,
+    "estoqueMinimo": 10,
+    "setor": "ALMOXARIFADO"
+  },
+  {
+    "codigo": "100007",
+    "nome": "APONTADOR DE PLÁSTICO SIMPLES COM 1 FURO",
+    "estoqueAtual": 73,
+    "estoqueTotal": 123,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110096",
+    "nome": "BACIA PLÁSTICA CANELADA 20L",
+    "estoqueAtual": 9,
+    "estoqueTotal": 14,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110011",
+    "nome": "BACIA PLÁSTICO REFORÇADA 15L",
+    "estoqueAtual": 4,
+    "estoqueTotal": 9,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "130003",
+    "nome": "BALA SORTIDA, MASTIGÁVEL, DE CONSISTÊNCIA MACIA. PACOTE COM 600G",
+    "estoqueAtual": 8,
+    "estoqueTotal": 13,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110006",
+    "nome": "BALDE PLÁSTICO 15L SEM TAMPA",
+    "estoqueAtual": 40,
+    "estoqueTotal": 45,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110007",
+    "nome": "BALDE PLÁSTICO 20L SEM TAMPA",
+    "estoqueAtual": 20,
+    "estoqueTotal": 25,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110008",
+    "nome": "BALDE PLÁSTICO 30L SEM TAMPA",
+    "estoqueAtual": 10,
+    "estoqueTotal": 15,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100257",
+    "nome": "BARBANTE DE ALGODÃO, ROLO COM 600 G",
+    "estoqueAtual": 0,
+    "estoqueTotal": 20,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "130015",
+    "nome": "BISCOITO DOCE, TIPO MAISENA, PACOTE COM 400G",
+    "estoqueAtual": 58,
+    "estoqueTotal": 108,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "026586",
+    "nome": "BISCOITO ROSQUINHA, PACOTE COM 400 G",
+    "estoqueAtual": 152,
+    "estoqueTotal": 202,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "130005",
+    "nome": "BISCOITO SALGADO, TIPO ÁGUA E SAL, PACOTE COM 400G",
+    "estoqueAtual": 39,
+    "estoqueTotal": 89,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100213",
+    "nome": "BLOCO DE DESENHO A4, TIPO CANSON, FOLHA C/ TAMANHO 210 X 297 MM, BLOCO C/ 20 UND.",
+    "estoqueAtual": 20,
+    "estoqueTotal": 40,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100243",
+    "nome": "BOBINA PARA CALCULADORA, MEDINDO 57 MM X 30 M. CAIXA COM 20 BOBINAS",
+    "estoqueAtual": 45,
+    "estoqueTotal": 75,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100011",
+    "nome": "BORRACHA BRANCA DE APAGAR N 20",
+    "estoqueAtual": 58,
+    "estoqueTotal": 108,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100012",
+    "nome": "BORRACHA BRANCA DE APAGAR N 40",
+    "estoqueAtual": 359,
+    "estoqueTotal": 409,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "985885",
+    "nome": "BORRACHA BRANCA DE APAGAR N 60",
+    "estoqueAtual": 225,
+    "estoqueTotal": 275,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100014",
+    "nome": "BORRACHA DE APAGAR PONTEIRA P ACOPLAR AO LÁPIS",
+    "estoqueAtual": 129,
+    "estoqueTotal": 179,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "96034090",
+    "nome": "BROXA ESCOVA PAREDE TIGRE 66MM",
+    "estoqueAtual": 0,
+    "estoqueTotal": 40,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "854401",
+    "nome": "CABO FLEXÍVEL 105",
+    "estoqueAtual": 8,
+    "estoqueTotal": 108,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "85444900",
+    "nome": "CABO FLEXÍVEL 10MM",
+    "estoqueAtual": 4,
+    "estoqueTotal": 104,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "854403",
+    "nome": "CABO FLEXÍVEL 8MM",
+    "estoqueAtual": 1,
+    "estoqueTotal": 101,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "73269090",
+    "nome": "CABO SUPORTE PARA ROLO DE PINTURA 23CM",
+    "estoqueAtual": 168,
+    "estoqueTotal": 268,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110013",
+    "nome": "CADEADO 35 MM",
+    "estoqueAtual": 31,
+    "estoqueTotal": 74,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110099",
+    "nome": "CADEADO 40 MM",
+    "estoqueAtual": 26,
+    "estoqueTotal": 66,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "110112",
+    "nome": "CADEADO 50 MM",
+    "estoqueAtual": 32,
+    "estoqueTotal": 62,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100203",
+    "nome": "CADERNO BROCHURA C 48 FOLHAS CAPA FLEXÍVEL",
+    "estoqueAtual": 5,
+    "estoqueTotal": 25,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100204",
+    "nome": "CADERNO BROCHURA C 96 FOLHAS CAPA DURA",
+    "estoqueAtual": 0,
+    "estoqueTotal": 50,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "000307",
+    "nome": "CADERNO ESPIRAL 96 FOLHAS ESPIRAL CAPA FLEXÍVEL",
+    "estoqueAtual": 67,
+    "estoqueTotal": 117,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100215",
+    "nome": "CADERNO ESPIRAL C 96 FOLHAS CAPA DURA",
+    "estoqueAtual": 22,
+    "estoqueTotal": 72,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100219",
+    "nome": "CADERNO ESPIRAL C 96 FOLHAS CAPA FLEXÍVEL",
+    "estoqueAtual": 30,
+    "estoqueTotal": 80,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "130006",
+    "nome": "CAFÉ TRADICIONAL PÓ 500G",
+    "estoqueAtual": 1833,
+    "estoqueTotal": 2353,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "854301",
+    "nome": "CAIXA DE LUZ 4X2",
+    "estoqueAtual": 97,
+    "estoqueTotal": 197,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "853002",
+    "nome": "CAIXA DE LUZ 4X2 VAZIA",
+    "estoqueAtual": 52,
+    "estoqueTotal": 152,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "39259090",
+    "nome": "CAIXA DE PASSAGEM 20X20",
+    "estoqueAtual": 2,
+    "estoqueTotal": 102,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "985962",
+    "nome": "CAIXA FRIGORÍFICA 15L POLIPROPILENO",
+    "estoqueAtual": 5,
+    "estoqueTotal": 10,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "985963",
+    "nome": "CAIXA FRIGORÍFICA 25L POLIPROPILENO",
+    "estoqueAtual": 1,
+    "estoqueTotal": 6,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "985964",
+    "nome": "CAIXA FRIGORÍFICA 45L POLIPROPILENO",
+    "estoqueAtual": 2,
+    "estoqueTotal": 7,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "985965",
+    "nome": "CAIXA FRIGORÍFICA 6L POLIPROPILENO",
+    "estoqueAtual": 5,
+    "estoqueTotal": 10,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120011",
+    "nome": "CAIXA ORGANIZADORA RATTAN COM TAMPA 20 LITROS",
+    "estoqueAtual": 5,
+    "estoqueTotal": 10,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120019",
+    "nome": "CAIXA TÉRMICA 45L COM RODINHAS POLIETILENO",
+    "estoqueAtual": 3,
+    "estoqueTotal": 8,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120018",
+    "nome": "CAIXA TÉRMICA 45L SEM RODINHAS POLIETILENO",
+    "estoqueAtual": 2,
+    "estoqueTotal": 7,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100016",
+    "nome": "CALCULADORA DE MESA C/ 8 DÍGITOS",
+    "estoqueAtual": 20,
+    "estoqueTotal": 30,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120024",
+    "nome": "CALDEIRO TAMPA ALUMÍNIO 18L N30",
+    "estoqueAtual": 2,
+    "estoqueTotal": 7,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120020",
+    "nome": "CANECA ALUMÍNIO 2L COM CABO DE MADEIRA",
+    "estoqueAtual": 0,
+    "estoqueTotal": 1,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "120022",
+    "nome": "CANECA ALUMÍNIO 5L COM CABO MADEIRA",
+    "estoqueAtual": 11,
+    "estoqueTotal": 13,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100018",
+    "nome": "CANETA ESFEROGRÁFICA AZUL",
+    "estoqueAtual": 894,
+    "estoqueTotal": 994,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  },
+  {
+    "codigo": "100019",
+    "nome": "CANETA ESFEROGRÁFICA PRETA",
+    "estoqueAtual": 796,
+    "estoqueTotal": 896,
+    "setor": "ALMOXARIFADO",
+    "preco": 0
+  }
+]     {"codigo": "84819010", "nome": "ACABAMENTO VLVULA DESCARGA CROMADO DOCOL SIMILAR", "estoqueAtual": 28, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
       {"codigo": "015815", "nome": "ACHOCOLATADO EM P 1KG", "estoqueAtual": 21, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
       {"codigo": "130002", "nome": "ACAR CRISTAL BRANCO TIPO I PACOTE 5KG", "estoqueAtual": 261, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
       {"codigo": "029483", "nome": "ADAPTADOR E40PE27", "estoqueAtual": 35, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
