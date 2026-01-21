@@ -1,0 +1,22 @@
+{
+  "dados": {
+    "produtos": [
+      {"codigo": "84819010", "nome": "ACABAMENTO VLVULA DESCARGA CROMADO DOCOL SIMILAR", "estoqueAtual": 28, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
+      {"codigo": "015815", "nome": "ACHOCOLATADO EM P 1KG", "estoqueAtual": 21, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
+      {"codigo": "130002", "nome": "ACAR CRISTAL BRANCO TIPO I PACOTE 5KG", "estoqueAtual": 261, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
+      {"codigo": "029483", "nome": "ADAPTADOR E40PE27", "estoqueAtual": 35, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
+      {"codigo": "853908", "nome": "ADAPTADOR TOMADA PINO DUPLO 1PT 10A", "estoqueAtual": 25, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
+      {"codigo": "110009", "nome": "GUA PERFUMADA ODORIZANTE LONGA AO 340ML", "estoqueAtual": 48, "estoqueMinimo": 10, "setor": "ALMOXARIFADO"},
+      {"codigo": "110002", "nome": "GUA SANITRIA FRASCO 2L", "estoqueAtual": 622, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
+      {"codigo": "110003", "nome": "LCOOL ETLICO HIDRATADO GEL 70 INPM 460G", "estoqueAtual": 288, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
+      {"codigo": "110500", "nome": "LCOOL LQUIDO 70", "estoqueAtual": 210, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
+      {"codigo": "82032010", "nome": "ALICATE UNIVERSAL 8", "estoqueAtual": 2, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
+      {"codigo": "100049", "nome": "ALMOFADA PARA CARIMBO N. 2 COR VERMELHA", "estoqueAtual": 3, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
+      {"codigo": "110005", "nome": "AMACIANTE ROUPAS FRASCO 2L COR AZUL", "estoqueAtual": 274, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
+      {"codigo": "130001", "nome": "AMIDO DE MILHO", "estoqueAtual": 5, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"},
+      {"codigo": "100004", "nome": "ANOTE E COLE NA COR AMARELA C1 UND 76 X 102 MM", "estoqueAtual": 143, "estoqueMinimo": 0, "setor": "ALMOXARIFADO"}
+    ],
+    "movimentacoes": [],
+    "setores": ["ADMINISTRAO","AGRICULTURA","ALMOXARIFADO","DESENV SOCIAL","BOMBEIROS","COMPRAS","CONSELHO TUTELAR","CRAS","CREAS","CRIANA FELIZ","CULTURA","DESENV REGIONAL","EDUCAO","ESPAO AMIGO","ESPORTE","FINANAS","GABINETE","GESTO PESSOAL","LAR DO ANCIO","LICITAO","LIMPEZA PBLICA","MEIO AMBIENTE","MERENDAS","OBRAS E INFRA","POUPATEMPO","PROCURADORIA","RH","SADE","TERCEIRO SETOR","TRNSITO","TRANSPORTE","TRIBUTAO","TURISMO","VIGILNCIA SANITRIA"]
+  }
+}
